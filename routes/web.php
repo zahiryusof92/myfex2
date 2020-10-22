@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
-        return view('auth.login');
+        return view('auth.register');
     });
 });
 
