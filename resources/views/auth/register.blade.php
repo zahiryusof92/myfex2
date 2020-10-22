@@ -41,8 +41,8 @@
                             <label for="consultant_type"><span class="text-danger">* </span>Jenis Konsultan</label>
                             <select class="form-control" id="consultant_type" name="consultant_type" onchange="getForm()" required>
                                 <option value="">- Sila Pilih -</option>
-                                <option value="Consultant">Konsultan</option>
-                                <option value="Broker">Broker</option>
+                                <option value="Syarikat">Syarikat</option>
+                                <option value="Individu">Individu</option>
                             </select>
                         </div>
                     </div>
@@ -139,10 +139,10 @@
         var consultant_type = document.getElementById("consultant_type");
         var consultant = consultant_type.value;
 
-        if (consultant === 'Consultant') {
+        if (consultant === 'Syarikat') {
             $('#broker_form').hide();
             $('#consultant_form').show();
-        } else if (consultant === 'Broker') {
+        } else if (consultant === 'Individu') {
             $('#broker_form').show();
             $('#consultant_form').hide();
         }
