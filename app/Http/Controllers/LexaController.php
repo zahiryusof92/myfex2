@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 
 class LexaController extends Controller {
 
+    public function __construct() {
+        $this->middleware('superadmin');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id) {
-        return view($id);
+    public function index($page) {
+        return view('admin.' . $page);
     }
 
     /**

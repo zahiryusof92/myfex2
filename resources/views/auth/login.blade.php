@@ -3,7 +3,6 @@
 @section('content')
 <!-- Begin page -->
 <div class="wrapper-page">
-
     <div class="card">
         <div class="card-body">
 

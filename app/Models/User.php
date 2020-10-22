@@ -48,4 +48,40 @@ class User extends Authenticatable {
         return $this->belongsTo('App\Models\Role');
     }
 
+    public function isUser() {
+        return $this->role->name === 'Pengguna Perniagaan Francais';
+    }
+
+    public function isConsultant() {
+        return $this->role->name === 'Pengguna Konsultan Francais';
+    }
+
+    public function isAccountant() {
+        return $this->role->name === 'Pegawai Proses (Kewangan & Pemasaran)';
+    }
+
+    public function isPPU() {
+        return $this->role->name === 'Pegawai Proses (Utama)';
+    }
+
+    public function isPPF() {
+        return $this->role->name === 'Pegawai Proses (Francais)';
+    }
+
+    public function isKPP() {
+        return $this->role->name === 'Ketua Pegawai Proses';
+    }
+
+    public function isPengarah() {
+        return $this->role->name === 'Pengarah';
+    }
+
+    public function isPendaftar() {
+        return $this->role->name === 'Pendaftar';
+    }
+
+    public function isSuperAdmin() {
+        return $this->role->name === 'Super Admin';
+    }
+
 }

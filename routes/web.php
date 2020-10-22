@@ -24,8 +24,11 @@ Route::middleware('guest')->group(function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-    Route::get('{any}', [App\Http\Controllers\LexaController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::middleware('superadmin')->group(function () {
+        Route::get('/page/{page}', [App\Http\Controllers\LexaController::class, 'index']);
+    });
 });
 
 
