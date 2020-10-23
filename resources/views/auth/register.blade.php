@@ -188,7 +188,7 @@
             if (form.parsley().isValid()) {
                 Swal.fire({
                     title: 'Berjaya!',
-                    text: 'Permohanan berjaya dihantar!',
+                    text: 'Maklumat berjaya dihantar!',
                     type: 'success',
                     showCancelButton: false,
                     confirmButtonColor: "#58db83"
