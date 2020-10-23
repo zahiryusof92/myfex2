@@ -12,6 +12,9 @@
 <script src="{{ asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/parsleyjs/i18n/ms.js')}}"></script>
 
+<!-- Sweet-Alert  -->
+<script src="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.js')}}"></script>
+
 @yield('script')
 
 <!-- App js -->

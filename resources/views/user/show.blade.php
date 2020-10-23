@@ -165,12 +165,12 @@
                             <dt class="col-sm-3">Ulasan Penilaian</dt>
                             <dd class="col-sm-9">Maklumat permohonan lengkap dan layak untuk diluluskan</dd>
                         </dl>
-                        
+
                         <h6>Maklumat Kelulusan</h6>
                         <dl class="row">
                             <dt class="col-sm-3">Keputusan Kelulusan</dt>
                             <dd class="col-sm-7">
-                                <form class="form-horizontal" method="POST" action="#" data-parsley-validate>
+                                <form class="form-horizontal" method="POST" action="" data-parsley-validate>
                                     <div class="form-group">
                                         <select class="form-control" required>
                                             <option value="">- Sila Pilih -</option>
@@ -241,7 +241,7 @@
                         <dl class="row">
                             <dt class="col-sm-3">Ulasan Penilaian</dt>
                             <dd class="col-sm-7">
-                                <form class="form-horizontal" method="POST" action="#" data-parsley-validate>
+                                <form class="form-horizontal" method="POST" action="" data-parsley-validate>
                                     <div class="form-group">
                                         <textarea class="form-control" rows="5" placeholder="Ulasan penilaian" required></textarea>
                                     </div>
@@ -264,4 +264,27 @@
 </div>
 <!-- end wrapper -->
 
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function () {
+        $("form").on('submit', function (e) {
+            e.preventDefault();
+            var form = $(this);
+
+            form.parsley().validate();
+
+            if (form.parsley().isValid()) {
+                Swal.fire({
+                    title: 'Berjaya!',
+                    text: 'Permohanan berjaya dihantar!',
+                    type: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: "#58db83"
+                });
+            }
+        });
+    });
+</script>
 @endsection

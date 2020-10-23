@@ -16,11 +16,23 @@
                 <h4 class="text-muted font-18 m-b-5 text-center">Login</h4>
                 <p class="text-muted text-center"></p>
 
+                <small>
+                    <span>Login Info:-</span>
+                    <ul class="list-unstyled">
+                        <li>1. Pegawai Proses Utama
+                            <ul>
+                                <li>Username: ppu / ppu@myfex.com</li>
+                                <li>Password: password</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </small>
+
                 <form class="form-horizontal m-t-30" method="POST" action="{{ route('login') }}" data-parsley-validate>
                     @csrf
 
                     <div class="form-group">
-                        <label for="username">Username</label>
+                        <label for="username">Username / E-mel</label>
                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" placeholder="" autocomplete="username" required autofocus>
                         @error('username')
                         <span class="invalid-feedback" role="alert">
@@ -30,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Kata Laluan</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="password" placeholder="" autocomplete="current-password" required>
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -43,7 +55,7 @@
                         <div class="col-6">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="remember">Remember Me</label>
+                                <label class="custom-control-label" for="remember">Ingatkan Saya</label>
                             </div>
                         </div>
                         <div class="col-6 text-right">
@@ -53,10 +65,12 @@
 
                     <div class="form-group m-t-10 mb-0 row">
                         <div class="col-12 m-t-20">
-                            <a href="" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a>
+                            <a href="#" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Kata Laluan?</a>
                         </div>
                     </div>
+
                 </form>
+
             </div>
 
         </div>
@@ -64,7 +78,7 @@
 
     <div class="m-t-40 text-center">
         @if (Route::has('register'))
-        <p>Don't have an account? <a href="{{ url('register') }}" class="font-14 text-primary"> Register Now </a> </p>
+        <p>Belum Ada Akaun? <a href="{{ url('register') }}" class="font-14 text-primary"> Daftar Sekarang </a> </p>
         @endif
         <p>&copy; {{date('Y')}} {{ config('app.name', 'Laravel') }}</p>
     </div>
