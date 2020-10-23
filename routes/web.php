@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LexaController;
 
 /*
   |--------------------------------------------------------------------------
@@ -24,10 +27,14 @@ Route::middleware('guest')->group(function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::resources([
+        'user' => UserController::class,
+    ]);
 
     Route::middleware('superadmin')->group(function () {
-        Route::get('/page/{page}', [App\Http\Controllers\LexaController::class, 'index']);
+        Route::get('/page/{page}', [LexaController::class, 'index']);
     });
 });
 

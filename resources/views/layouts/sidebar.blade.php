@@ -7,18 +7,35 @@
             <!-- Left Menu Start -->
             <ul class="metismenu" id="side-menu">
                 <li class="menu-title">Main</li>
-                <li>
+                <li class="{{ (request()->is('home')) ? 'active' : '' }}">
                     <a href="{{ url('home') }}" class="waves-effect">
-                        <i class="mdi mdi-view-dashboard"></i><span> Dashboard </span>
+                        <i class="mdi mdi-view-dashboard"></i><span> Laman Utama </span>
                     </a>
                 </li>
 
                 @if (Auth::user()->isPPU())
+                <li class="{{ (request()->is('user*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('user*')) ? 'active' : '' }}"><i class="mdi mdi-account-multiple"></i><span>Pengguna<span class="badge badge-pill badge-danger float-right">2</span></span></a>
+                    <ul class="submenu {{ (request()->is('user*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('user*')) ? 'active' : '' }}">
+                            <a href="{{ route('user.index') }}">Senarai Pengguna</a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Pengguna <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-factory"></i><span>Syarikat<span class="badge badge-pill badge-danger float-right">3</span></span></a>
                     <ul class="submenu">
-                        <li><a href="#">Senarai Pengguna Pending</a></li>
-                        <li><a href="#">Senarai Semua Pengguna</a></li>
+                        <li>
+                            <a href="#">Senarai Syarikat</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama<span class="badge badge-pill badge-danger float-right">5</span></span></a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#">Senarai Jenama</a>
+                        </li>
                     </ul>
                 </li>
                 @endif

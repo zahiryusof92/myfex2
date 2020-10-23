@@ -16,7 +16,7 @@
                 <h4 class="text-muted font-18 m-b-5 text-center">Pendaftaran Pengguna</h4>
                 <p class="text-muted text-center"></p>
 
-                <form class="form-horizontal" method="POST" action="{{ route('register') }}" data-parsley-validate>
+                <form class="form-horizontal" method="POST" action="#" data-parsley-validate>
                     @csrf
 
                     <div class="m-t-30">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LexaController extends Controller {
+class UserController extends Controller {
 
     public function __construct() {
         $this->middleware('auth');
@@ -15,8 +15,8 @@ class LexaController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page) {
-        return view('admin.' . $page);
+    public function index() {
+        return view('user.index');
     }
 
     /**
@@ -45,7 +45,7 @@ class LexaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        return view('user.show', compact('id'));
     }
 
     /**

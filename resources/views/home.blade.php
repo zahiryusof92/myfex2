@@ -6,10 +6,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    <h4 class="page-title">Home</h4>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">Home</li>
-                    </ol>
+                    <h4 class="page-title">Laman Utama</h4>
                 </div>
             </div>
         </div>
