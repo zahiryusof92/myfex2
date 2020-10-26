@@ -13,20 +13,89 @@
                     </a>
                 </li>
 
+                @if (Auth::user()->isUser())
+                <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-factory"></i>
+                        <span>Syarikat<span class="badge badge-pill badge-danger float-right">{{ App\Models\Company::getTotalPending() }}</span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                            <a href="{{ route('company.index') }}">Senarai Syarikat</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama<span class="badge badge-pill badge-danger float-right">5</span></span></a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#">Senarai Jenama</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if (Auth::user()->isConsultant())
+                <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}"><i class="mdi mdi-factory"></i><span>Syarikat</span></a>
+                    <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                            <a href="{{ route('company.index') }}">Senarai Syarikat</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama<span class="badge badge-pill badge-danger float-right">5</span></span></a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#">Senarai Jenama</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif 
+
                 @if (Auth::user()->isPPU())
                 <li class="{{ (request()->is('user*')) ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('user*')) ? 'active' : '' }}"><i class="mdi mdi-account-multiple"></i><span>Pengguna<span class="badge badge-pill badge-danger float-right">2</span></span></a>
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('user*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span>Pengguna<span class="badge badge-pill badge-danger float-right">{{ App\Models\User::getTotalPending() }}</span></span>
+                    </a>
                     <ul class="submenu {{ (request()->is('user*')) ? 'collapse in' : '' }}">
                         <li class="{{ (request()->is('user*')) ? 'active' : '' }}">
                             <a href="{{ route('user.index') }}">Senarai Pengguna</a>
                         </li>
                     </ul>
                 </li>
+                <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-factory"></i>
+                        <span>Syarikat<span class="badge badge-pill badge-danger float-right">{{ App\Models\Company::getTotalPending() }}</span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                            <a href="{{ route('company.index') }}">Senarai Syarikat</a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-factory"></i><span>Syarikat<span class="badge badge-pill badge-danger float-right">3</span></span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama</span></a>
                     <ul class="submenu">
                         <li>
-                            <a href="#">Senarai Syarikat</a>
+                            <a href="#">Senarai Jenama</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if (Auth::user()->isKPP())
+                <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-factory"></i>
+                        <span>Syarikat<span class="badge badge-pill badge-danger float-right">{{ App\Models\Company::getTotalPending() }}</span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                            <a href="{{ route('company.index') }}">Senarai Syarikat</a>
                         </li>
                     </ul>
                 </li>

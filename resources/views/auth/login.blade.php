@@ -16,18 +16,6 @@
                 <h4 class="text-muted font-18 m-b-5 text-center">Login</h4>
                 <p class="text-muted text-center"></p>
 
-                <small>
-                    <span>Login Info:-</span>
-                    <ul class="list-unstyled">
-                        <li>1. Pegawai Proses Utama
-                            <ul>
-                                <li>Username: ppu / ppu@myfex.com</li>
-                                <li>Password: password</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </small>
-
                 <form class="form-horizontal m-t-30" method="POST" action="{{ route('login') }}" data-parsley-validate>
                     @csrf
 

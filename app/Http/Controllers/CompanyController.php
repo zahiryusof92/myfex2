@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use App\Helpers\Helper;
-use App\Models\User;
+use App\Models\Company;
 
-class UserController extends Controller {
+class CompanyController extends Controller {
 
     public function __construct() {
         $this->middleware('auth');
@@ -21,35 +21,40 @@ class UserController extends Controller {
      */
     public function index(Request $request) {
         if ($request->ajax()) {
-            if (Auth::user()->isPPU()) {
-                $data = User::where('staff', false)
+            $data = array();
+
+            if (Auth::user()->isUser()) {
+                $data = Company::where('id', Auth::user()->company_id)->get();
+            } else if (Auth::user()->isConsultant()) {
+                $data = Company::where('consultant_id', Auth::user()->id)->get();
+            } else if (Auth::user()->isPPU()) {
+                $data = Company::where('consultant', false)
                         ->where(function($query) {
-                            $query->where('status', User::BARU);
-                            $query->orWhere('status', User::TELAH_DINILAI);
+                            $query->where('status', Company::BARU);
+                        })
+                        ->get();
+            } else if (Auth::user()->isKPP()) {
+                $data = Company::where('consultant', false)
+                        ->where(function($query) {
+                            $query->where('status', Company::TELAH_DINILAI);
                         })
                         ->get();
             }
 
             return DataTables::of($data)
-                            ->editColumn('username', function ($row) {
-                                return '<a href="' . route('user.show', $row->id) . '"><u>' . $row->username . '</u></a>';
-                            })
-                            ->editColumn('role', function ($row) {
-                                $role = '<i>(not set)</i>';
-                                if ($row->role_id) {
-                                    $role = $row->role->name;
-                                }
-
-                                return $role;
+                            ->editColumn('reg_no', function ($row) {
+                                return '<a href="' . route('company.show', $row->id) . '"><u>' . $row->reg_no . '</u></a>';
                             })
                             ->editColumn('status', function ($row) {
-                                if ($row->status == User::DRAFT || $row->status == User::BARU) {
+                                if ($row->status == Company::DRAF) {
+                                    $status = '<span class="badge badge-pill badge-secondary">' . $row->getStatus() . '</span>';
+                                } else if ($row->status == Company::BARU) {
                                     $status = '<span class="badge badge-pill badge-warning">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == User::TELAH_DINILAI) {
+                                } else if ($row->status == Company::TELAH_DINILAI) {
                                     $status = '<span class="badge badge-pill badge-info">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == User::DILULUSKAN) {
+                                } else if ($row->status == Company::DILULUSKAN) {
                                     $status = '<span class="badge badge-pill badge-success">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == User::DITOLAK) {
+                                } else if ($row->status == Company::DITOLAK) {
                                     $status = '<span class="badge badge-pill badge-danger">' . $row->getStatus() . '</span>';
                                 }
 
@@ -63,11 +68,11 @@ class UserController extends Controller {
 
                                 return $created_at;
                             })
-                            ->rawColumns(['username', 'role', 'status', 'created_at'])
+                            ->rawColumns(['reg_no', 'status', 'created_at'])
                             ->make(true);
         }
 
-        return view('user.index');
+        return view('company.index');
     }
 
     /**
@@ -76,7 +81,7 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //
+        return view('company.create');
     }
 
     /**
@@ -96,9 +101,9 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $user = User::findOrFail($id);
+        $company = Company::findOrFail($id);
 
-        return view('user.show', compact('user'));
+        return view('company.show', compact('company'));
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\LexaController;
 
 /*
@@ -20,7 +21,7 @@ use App\Http\Controllers\LexaController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
-        return view('auth.register');
+        return view('auth.login');
     });
 });
 
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resources([
         'user' => UserController::class,
+        'company' => CompanyController::class,
     ]);
 
     Route::middleware('superadmin')->group(function () {

@@ -76,7 +76,6 @@
                         <div class="form-group">
                             <label for="company_letter_of_authority"><span class="text-danger">* </span>Surat Perwakilan Kuasa</label>
                             <input type="file" class="filestyle" id="company_letter_of_authority" name="company_letter_of_authority" data-input="true" data-buttonname="btn-secondary" required>
-
                         </div>
                     </div>
 
