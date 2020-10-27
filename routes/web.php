@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\BrandRightsController;
 use App\Http\Controllers\LexaController;
 
 /*
@@ -31,11 +32,11 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-
     Route::resources([
         'profile' => ProfileController::class,
         'user' => UserController::class,
         'company' => CompanyController::class,
+        'brandRights' => BrandRightsController::class,
     ]);
 
     Route::middleware('superadmin')->group(function () {

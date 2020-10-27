@@ -34,7 +34,6 @@ class CreateCompaniesTable extends Migration {
             $table->string('buss_country')->nullable();
             $table->text('ssm_cert')->nullable();
             $table->text('auth_letter')->nullable();
-            $table->integer('brand_id')->unsigned()->nullable();
             $table->boolean('consultant')->default(false);
             $table->integer('consultant_id')->unsigned()->nullable();
             $table->integer('status')->default(0);

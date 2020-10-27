@@ -6,11 +6,11 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
-                <h4 class="page-title">Daftar Syarikat</h4>
+                <h4 class="page-title">Daftar Jenama</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('company.index') }}">Senarai Syarikat</a></li>
-                    <li class="breadcrumb-item active">Daftar Syarikat</li>
+                    <li class="breadcrumb-item"><a href="{{ route('brandRights.index') }}">Senarai Jenama</a></li>
+                    <li class="breadcrumb-item active">Daftar Jenama</li>
                 </ol>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12 text-right">
-                            <a href="{{ route('company.index') }}" class="btn btn-danger w-md waves-effect waves-light">
+                            <a href="{{ route('brandRights.index') }}" class="btn btn-danger w-md waves-effect waves-light">
                                 <i class="mdi mdi-undo mdi-18px"></i> Kembali
                             </a>
                         </div>
@@ -105,7 +105,7 @@
                                 <label for="ssm_cert"><span class="text-danger">* </span>Sijil Pendaftaran Syarikat Malaysia (SSM)</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="file" class="form-control-file" id="ssm_cert" name="ssm_cert" required>
+                                <input type="file" class="filestyle" id="ssm_cert" name="ssm_cert" data-input="true" data-buttonname="btn-secondary" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -113,7 +113,7 @@
                                 <label for="letter_of_authority"><span class="text-danger">* </span>Surat Perwakilan Kuasa</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="file" class="form-control-file" id="letter_of_authority" name="letter_of_authority" required>
+                                <input type="file" class="filestyle" id="letter_of_authority" name="letter_of_authority" data-input="true" data-buttonname="btn-secondary" required>
                             </div>
                         </div>
 

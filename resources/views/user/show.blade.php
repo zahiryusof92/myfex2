@@ -79,17 +79,17 @@
                             </dd>
                         </dl>
                         @endif
-
-                        @if ($user->status == App\Models\User::BARU)
+                        
                         <h6>Maklumat Permohonan</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Tarikh Permohonan</dt>
                             <dd class="col-sm-8">{{ $user->created_at->format('d-M-Y') }}</dd>
 
                             <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-warning">{{ $user->getStatus() }}</span></dd>
+                            <dd class="col-sm-8">{!! $user->getStatus() !!}</dd>
                         </dl>
 
+                        @if ($user->status == App\Models\User::BARU)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Ulasan Penilaian</dt>
@@ -106,16 +106,7 @@
                                 </form>
                             </dd>
                         </dl>
-                        @elseif ($user->status == App\Models\User::TELAH_DINILAI)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $user->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-info">{{ $user->getStatus() }}</span></dd>
-                        </dl>
-
+                        @elseif ($user->status == App\Models\User::DINILAI)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -140,6 +131,9 @@
                                             <option value="2">Ditolak</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" placeholder="Ulasan Kelulusan" required></textarea>
+                                    </div>
                                     <div class="form-group row m-t-10">
                                         <div class="col-12 text-right">
                                             <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Hantar <i class="mdi mdi-send"></i></button>
@@ -148,16 +142,7 @@
                                 </form>
                             </dd>
                         </dl>
-                        @elseif ($user->status == App\Models\User::DILULUSKAN)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $user->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-success">{{ $user->getStatus() }}</span></dd>
-                        </dl>
-
+                        @elseif ($user->status == App\Models\User::DILULUS)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -177,17 +162,11 @@
 
                             <dt class="col-sm-4">Tarikh Kelulusan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Kelulusan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan lengkap</dd>
                         </dl>
                         @elseif ($user->status == App\Models\User::DITOLAK)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $user->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-danger">{{ $user->getStatus() }}</span></dd>
-                        </dl>
-
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -207,6 +186,9 @@
 
                             <dt class="col-sm-4">Tarikh Penolakan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Penolakan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan tidak lengkap</dd>
                         </dl>
                         @endif
 

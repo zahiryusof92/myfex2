@@ -17,7 +17,7 @@
                 <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
                         <i class="mdi mdi-factory"></i>
-                        <span>Syarikat<span class="badge badge-pill badge-danger float-right">{{ App\Models\Company::getTotalPending() }}</span></span>
+                        <span> Syarikat <span class="badge badge-pill badge-danger">{{ App\Models\Company::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
                     <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
                         <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
@@ -25,11 +25,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama<span class="badge badge-pill badge-danger float-right">5</span></span></a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="#">Senarai Jenama</a>
+                <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-copyright"></i>
+                        <span> Jenama <span class="badge badge-pill badge-danger">{{ App\Models\BrandRights::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('brandRights*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                            <a href="{{ route('brandRights.index') }}">Senarai Jenama</a>
                         </li>
                     </ul>
                 </li>
@@ -37,18 +40,24 @@
 
                 @if (Auth::user()->isConsultant())
                 <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}"><i class="mdi mdi-factory"></i><span>Syarikat</span></a>
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-factory"></i>
+                        <span> Syarikat <span class="badge badge-pill badge-danger">{{ App\Models\Company::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
                     <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
                         <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
                             <a href="{{ route('company.index') }}">Senarai Syarikat</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama<span class="badge badge-pill badge-danger float-right">5</span></span></a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="#">Senarai Jenama</a>
+                <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-copyright"></i>
+                        <span> Jenama <span class="badge badge-pill badge-danger">{{ App\Models\BrandRights::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('brandRights*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                            <a href="{{ route('brandRights.index') }}">Senarai Jenama</a>
                         </li>
                     </ul>
                 </li>
@@ -58,7 +67,7 @@
                 <li class="{{ (request()->is('user*')) ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="waves-effect {{ (request()->is('user*')) ? 'active' : '' }}">
                         <i class="mdi mdi-account-multiple"></i>
-                        <span>Pengguna<span class="badge badge-pill badge-danger float-right">{{ App\Models\User::getTotalPending() }}</span></span>
+                        <span> Pengguna <span class="badge badge-pill badge-danger">{{ App\Models\User::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
                     <ul class="submenu {{ (request()->is('user*')) ? 'collapse in' : '' }}">
                         <li class="{{ (request()->is('user*')) ? 'active' : '' }}">
@@ -69,7 +78,7 @@
                 <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
                         <i class="mdi mdi-factory"></i>
-                        <span>Syarikat<span class="badge badge-pill badge-danger float-right">{{ App\Models\Company::getTotalPending() }}</span></span>
+                        <span> Syarikat <span class="badge badge-pill badge-danger">{{ App\Models\Company::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
                     <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
                         <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
@@ -77,11 +86,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama</span></a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="#">Senarai Jenama</a>
+                <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-copyright"></i>
+                        <span> Jenama <span class="badge badge-pill badge-danger">{{ App\Models\BrandRights::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('brandRights*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                            <a href="{{ route('brandRights.index') }}">Senarai Jenama</a>
                         </li>
                     </ul>
                 </li>
@@ -91,7 +103,7 @@
                 <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
                         <i class="mdi mdi-factory"></i>
-                        <span>Syarikat<span class="badge badge-pill badge-danger float-right">{{ App\Models\Company::getTotalPending() }}</span></span>
+                        <span> Syarikat <span class="badge badge-pill badge-danger">{{ App\Models\Company::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
                     <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
                         <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
@@ -99,11 +111,64 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-copyright"></i><span>Jenama<span class="badge badge-pill badge-danger float-right">5</span></span></a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="#">Senarai Jenama</a>
+                <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-copyright"></i>
+                        <span> Jenama <span class="badge badge-pill badge-danger">{{ App\Models\BrandRights::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('brandRights*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                            <a href="{{ route('brandRights.index') }}">Senarai Jenama</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                
+                @if (Auth::user()->isPengarah())
+                <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-factory"></i>
+                        <span> Syarikat <span class="badge badge-pill badge-danger">{{ App\Models\Company::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                            <a href="{{ route('company.index') }}">Senarai Syarikat</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-copyright"></i>
+                        <span> Jenama <span class="badge badge-pill badge-danger">{{ App\Models\BrandRights::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('brandRights*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                            <a href="{{ route('brandRights.index') }}">Senarai Jenama</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                
+                @if (Auth::user()->isPendaftar())
+                <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-factory"></i>
+                        <span> Syarikat <span class="badge badge-pill badge-danger">{{ App\Models\Company::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                            <a href="{{ route('company.index') }}">Senarai Syarikat</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                        <i class="mdi mdi-copyright"></i>
+                        <span> Jenama <span class="badge badge-pill badge-danger">{{ App\Models\BrandRights::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>
+                    <ul class="submenu {{ (request()->is('brandRights*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                            <a href="{{ route('brandRights.index') }}">Senarai Jenama</a>
                         </li>
                     </ul>
                 </li>

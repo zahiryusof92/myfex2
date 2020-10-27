@@ -25,7 +25,7 @@ class UserController extends Controller {
                 $data = User::where('staff', false)
                         ->where(function($query) {
                             $query->where('status', User::BARU);
-                            $query->orWhere('status', User::TELAH_DINILAI);
+                            $query->orWhere('status', User::DINILAI);
                         })
                         ->get();
             }
@@ -43,17 +43,7 @@ class UserController extends Controller {
                                 return $role;
                             })
                             ->editColumn('status', function ($row) {
-                                if ($row->status == User::DRAFT || $row->status == User::BARU) {
-                                    $status = '<span class="badge badge-pill badge-warning">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == User::TELAH_DINILAI) {
-                                    $status = '<span class="badge badge-pill badge-info">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == User::DILULUSKAN) {
-                                    $status = '<span class="badge badge-pill badge-success">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == User::DITOLAK) {
-                                    $status = '<span class="badge badge-pill badge-danger">' . $row->getStatus() . '</span>';
-                                }
-
-                                return $status;
+                                return $row->getStatus();
                             })
                             ->editColumn('created_at', function($row) {
                                 $created_at = '<i>(not set)</i>';

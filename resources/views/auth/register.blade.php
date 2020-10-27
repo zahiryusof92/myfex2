@@ -71,11 +71,11 @@
                         </div>
                         <div class="form-group">
                             <label for="company_ssm_cert"><span class="text-danger">* </span>Sijil Pendaftaran Syarikat Malaysia (SSM)</label>
-                            <input type="file" class="filestyle" id="company_ssm_cert" name="company_ssm_cert" data-input="true" data-buttonname="btn-secondary" required>
+                            <input type="file" class="form-control-file" id="company_ssm_cert" name="company_ssm_cert" required>
                         </div>
                         <div class="form-group">
                             <label for="company_letter_of_authority"><span class="text-danger">* </span>Surat Perwakilan Kuasa</label>
-                            <input type="file" class="filestyle" id="company_letter_of_authority" name="company_letter_of_authority" data-input="true" data-buttonname="btn-secondary" required>
+                            <input type="file" class="form-control-file" id="company_letter_of_authority" name="company_letter_of_authority" required>
                         </div>
                     </div>
 

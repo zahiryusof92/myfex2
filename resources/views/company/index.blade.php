@@ -49,8 +49,8 @@
                                 <th>Nama Syarikat</th>
                                 <th>E-mel Syarikat</th>
                                 <th>No. Telefon Syarikat</th>
-                                <th>Tarikh Permohonan</th>
                                 <th>Status</th>
+                                <th>Tarikh Permohonan</th>                                
                             </tr>
                         </thead>
                         <tbody>
@@ -86,10 +86,10 @@ $(document).ready(function () {
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'phone_no', name: 'phone_no'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'status', name: 'status'}
+            {data: 'status', name: 'status'},
+            {data: 'created_at', name: 'created_at'}            
         ],
-        order: [4, 'desc']
+        order: [5, 'desc']
     });
 });
 </script>

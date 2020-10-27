@@ -2,7 +2,38 @@
 
 namespace App\Helpers;
 
+use App\Models\Country;
+
 class Helper {
+
+    public static function typeFranchiseList() {
+        $franchise_type = array(
+            '' => '- Sila Pilih - ',
+            '1' => 'Pemberi Francais',
+            '2' => 'Pemegang Francais',
+        );
+
+        return $franchise_type;
+    }
+
+    public static function countryList() {
+        $country = ['' => '- Sila Pilih - '];
+        $country += Country::orderBy('nicename', 'asc')->pluck('nicename', 'id')->toArray();
+
+        return $country;
+    }
+
+    public static function getFranchiseType($type) {
+        if ($type == 1) {
+            $franchise_type = "Francaisor";
+        } else if ($type == 1) {
+            $franchise_type = "Francaisi Induk";
+        } else {
+            $franchise_type = '<i>(not set)</i>';
+        }
+
+        return $franchise_type;
+    }
 
     public static function getFormattedDate($date, $type = 'datetime', $array = false) {
 

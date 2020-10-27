@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    <h4 class="page-title">Papar Syarikat</h4>
+                    <h4 class="page-title">Maklumat Syarikat</h4>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('company.index') }}">Senarai Syarikat</a></li>
@@ -85,25 +85,16 @@
                             </dd>
                         </dl>
 
-                        @if ($company->status == App\Models\Company::BARU)
                         <h6>Maklumat Permohonan</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Tarikh Permohonan</dt>
                             <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
 
                             <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-warning">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-                        @elseif ($company->status == App\Models\Company::TELAH_DINILAI)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-info">{{ $company->getStatus() }}</span></dd>
+                            <dd class="col-sm-8">{!! $company->getStatus() !!}</dd>
                         </dl>
 
+                        @if ($company->status == App\Models\Company::DINILAI)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -115,16 +106,7 @@
                             <dt class="col-sm-4">Ulasan Penilaian</dt>
                             <dd class="col-sm-8">Maklumat permohonan lengkap dan disyorkan untuk diluluskan</dd>
                         </dl>
-                        @elseif ($company->status == App\Models\Company::DILULUSKAN)                        
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-success">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
+                        @elseif ($company->status == App\Models\Company::DILULUS)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -144,17 +126,11 @@
 
                             <dt class="col-sm-4">Tarikh Kelulusan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Kelulusan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan lengkap</dd>
                         </dl>
                         @elseif ($company->status == App\Models\Company::DITOLAK)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-danger">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -174,6 +150,9 @@
 
                             <dt class="col-sm-4">Tarikh Penolakan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Penolakan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan tidak lengkap</dd>
                         </dl>
                         @endif
                         @else
@@ -331,25 +310,16 @@
                             </dd>
                         </dl>
 
-                        @if ($company->status == App\Models\Company::BARU)
                         <h6>Maklumat Permohonan</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Tarikh Permohonan</dt>
                             <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
 
                             <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-warning">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-                        @elseif ($company->status == App\Models\Company::TELAH_DINILAI)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-info">{{ $company->getStatus() }}</span></dd>
+                            <dd class="col-sm-8">{!! $company->getStatus() !!}</dd>
                         </dl>
 
+                        @if ($company->status == App\Models\Company::DINILAI)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -361,16 +331,7 @@
                             <dt class="col-sm-4">Ulasan Penilaian</dt>
                             <dd class="col-sm-8">Maklumat permohonan lengkap dan disyorkan untuk diluluskan</dd>
                         </dl>
-                        @elseif ($company->status == App\Models\Company::DILULUSKAN)                        
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-success">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
+                        @elseif ($company->status == App\Models\Company::DILULUS)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -390,17 +351,11 @@
 
                             <dt class="col-sm-4">Tarikh Kelulusan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Kelulusan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan lengkap</dd>
                         </dl>
                         @elseif ($company->status == App\Models\Company::DITOLAK)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-danger">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -420,6 +375,9 @@
 
                             <dt class="col-sm-4">Tarikh Penolakan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Penolakan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan tidak lengkap</dd>
                         </dl>
                         @endif
                         @endif
@@ -479,25 +437,16 @@
                             </dd>
                         </dl>
 
-                        @if ($company->status == App\Models\Company::DRAF)
                         <h6>Maklumat Permohonan</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Tarikh Permohonan</dt>
                             <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
 
                             <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-secondary">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-                        @elseif ($company->status == App\Models\Company::BARU)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-warning">{{ $company->getStatus() }}</span></dd>
+                            <dd class="col-sm-8">{!! $company->getStatus() !!}</span></dd>
                         </dl>
 
+                        @if ($company->status == App\Models\Company::BARU)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Ulasan Penilaian</dt>
@@ -514,16 +463,7 @@
                                 </form>
                             </dd>
                         </dl>
-                        @elseif ($company->status == App\Models\Company::TELAH_DINILAI)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-info">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
+                        @elseif ($company->status == App\Models\Company::DINILAI)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -535,16 +475,7 @@
                             <dt class="col-sm-4">Ulasan Penilaian</dt>
                             <dd class="col-sm-8">Maklumat permohonan lengkap dan disyorkan untuk diluluskan</dd>
                         </dl>
-                        @elseif ($company->status == App\Models\Company::DILULUSKAN)                        
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-success">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
+                        @elseif ($company->status == App\Models\Company::DILULUS)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -564,17 +495,11 @@
 
                             <dt class="col-sm-4">Tarikh Kelulusan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Kelulusan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan lengkap</dd>
                         </dl>
                         @elseif ($company->status == App\Models\Company::DITOLAK)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-danger">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -594,6 +519,9 @@
 
                             <dt class="col-sm-4">Tarikh Penolakan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Penolakan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan tidak lengkap</dd>
                         </dl>
                         @endif
                         @endif
@@ -653,34 +581,16 @@
                             </dd>
                         </dl>
 
-                        @if ($company->status == App\Models\Company::DRAF)
                         <h6>Maklumat Permohonan</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Tarikh Permohonan</dt>
                             <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
 
                             <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-secondary">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-                        @elseif ($company->status == App\Models\Company::BARU)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-warning">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-                        @elseif ($company->status == App\Models\Company::TELAH_DINILAI)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-info">{{ $company->getStatus() }}</span></dd>
+                            <dd class="col-sm-8">{!! $company->getStatus() !!}</span></dd>
                         </dl>
 
+                        @if ($company->status == App\Models\Company::DINILAI)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -692,7 +602,7 @@
                             <dt class="col-sm-4">Ulasan Penilaian</dt>
                             <dd class="col-sm-8">Maklumat permohonan lengkap dan disyorkan untuk diluluskan</dd>
                         </dl>
-                        
+
                         <h6>Maklumat Kelulusan</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Keputusan Kelulusan</dt>
@@ -705,6 +615,9 @@
                                             <option value="2">Ditolak</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" placeholder="Ulasan kelulusan" required></textarea>
+                                    </div>
                                     <div class="form-group row m-t-10">
                                         <div class="col-12 text-right">
                                             <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Hantar <i class="mdi mdi-send"></i></button>
@@ -713,16 +626,7 @@
                                 </form>
                             </dd>
                         </dl>
-                        @elseif ($company->status == App\Models\Company::DILULUSKAN)                        
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-success">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
+                        @elseif ($company->status == App\Models\Company::DILULUS)
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -742,17 +646,11 @@
 
                             <dt class="col-sm-4">Tarikh Kelulusan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Kelulusan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan lengkap</dd>
                         </dl>
                         @elseif ($company->status == App\Models\Company::DITOLAK)
-                        <h6>Maklumat Permohonan</h6>
-                        <dl class="row">
-                            <dt class="col-sm-4">Tarikh Permohonan</dt>
-                            <dd class="col-sm-8">{{ $company->created_at->format('d-M-Y') }}</dd>
-
-                            <dt class="col-sm-4">Status Permohonan</dt>
-                            <dd class="col-sm-8"><span class="badge badge-pill badge-danger">{{ $company->getStatus() }}</span></dd>
-                        </dl>
-
                         <h6>Maklumat Penilaian</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Penilaian Oleh</dt>
@@ -772,6 +670,9 @@
 
                             <dt class="col-sm-4">Tarikh Penolakan</dt>
                             <dd class="col-sm-8">{{ date('d-M-Y') }}</dd>
+                            
+                            <dt class="col-sm-4">Ulasan Penolakan</dt>
+                            <dd class="col-sm-8">Maklumat permohonan tidak lengkap</dd>
                         </dl>
                         @endif
                         @endif

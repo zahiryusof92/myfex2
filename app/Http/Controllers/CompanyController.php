@@ -28,17 +28,9 @@ class CompanyController extends Controller {
             } else if (Auth::user()->isConsultant()) {
                 $data = Company::where('consultant_id', Auth::user()->id)->get();
             } else if (Auth::user()->isPPU()) {
-                $data = Company::where('consultant', false)
-                        ->where(function($query) {
-                            $query->where('status', Company::BARU);
-                        })
-                        ->get();
+                $data = Company::where('consultant', false)->where('status', Company::BARU)->get();
             } else if (Auth::user()->isKPP()) {
-                $data = Company::where('consultant', false)
-                        ->where(function($query) {
-                            $query->where('status', Company::TELAH_DINILAI);
-                        })
-                        ->get();
+                $data = Company::where('consultant', false)->where('status', Company::DINILAI)->get();
             }
 
             return DataTables::of($data)
@@ -46,19 +38,7 @@ class CompanyController extends Controller {
                                 return '<a href="' . route('company.show', $row->id) . '"><u>' . $row->reg_no . '</u></a>';
                             })
                             ->editColumn('status', function ($row) {
-                                if ($row->status == Company::DRAF) {
-                                    $status = '<span class="badge badge-pill badge-secondary">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == Company::BARU) {
-                                    $status = '<span class="badge badge-pill badge-warning">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == Company::TELAH_DINILAI) {
-                                    $status = '<span class="badge badge-pill badge-info">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == Company::DILULUSKAN) {
-                                    $status = '<span class="badge badge-pill badge-success">' . $row->getStatus() . '</span>';
-                                } else if ($row->status == Company::DITOLAK) {
-                                    $status = '<span class="badge badge-pill badge-danger">' . $row->getStatus() . '</span>';
-                                }
-
-                                return $status;
+                                return $row->getStatus();
                             })
                             ->editColumn('created_at', function($row) {
                                 $created_at = '<i>(not set)</i>';

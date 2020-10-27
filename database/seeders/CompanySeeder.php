@@ -15,55 +15,55 @@ class CompanySeeder extends Seeder {
     public function run() {
         Company::factory()->create([
             'consultant' => false,
-            'status' => 0
+            'status' => Company::DRAF
         ]);
 
         Company::factory()->create([
             'consultant' => false,
-            'status' => 1
+            'status' => Company::BARU
         ]);
 
         Company::factory()->create([
             'consultant' => false,
-            'status' => 2
+            'status' => Company::DINILAI
         ]);
 
         Company::factory()->create([
             'consultant' => false,
-            'status' => 3
+            'status' => Company::DILULUS
         ]);
 
         Company::factory()->create([
             'consultant' => true,
-            'status' => 0
+            'status' => Company::DRAF
         ]);
 
         Company::factory()->create([
             'consultant' => true,
-            'status' => 0
+            'status' => Company::DRAF
         ]);
 
         Company::factory()->create([
             'consultant' => false,
-            'status' => 1,
+            'status' => Company::BARU,
             'consultant_id' => 6
         ]);
 
         Company::factory()->create([
             'consultant' => false,
-            'status' => 2,
+            'status' => Company::DINILAI,
             'consultant_id' => 6
         ]);
 
         Company::factory()->create([
             'consultant' => false,
-            'status' => 3,
+            'status' => Company::DILULUS,
             'consultant_id' => 6
         ]);
 
         Company::factory()->create([
             'consultant' => false,
-            'status' => 4,
+            'status' => Company::DITOLAK,
             'consultant_id' => 6
         ]);
     }

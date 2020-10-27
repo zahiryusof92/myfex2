@@ -30,7 +30,7 @@ class UserSeeder extends Seeder {
             'role_id' => 1,
             'company_id' => 2,
             'staff' => false,
-            'status' => User::TELAH_DINILAI
+            'status' => User::DINILAI
         ]);
 
         User::factory()->create([
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder {
             'role_id' => 1,
             'company_id' => 3,
             'staff' => false,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
 
         User::factory()->create([
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder {
             'role_id' => 1,
             'company_id' => 4,
             'staff' => false,
-            'status' => 4
+            'status' => User::DITOLAK
         ]);
 
         User::factory()->create([
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder {
             'role_id' => 2,
             'company_id' => 6,
             'staff' => false,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
 
         User::factory()->create([
@@ -88,7 +88,7 @@ class UserSeeder extends Seeder {
             'email' => 'ppf@myfex.com',
             'role_id' => 4,
             'staff' => true,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
 
         User::factory()->create([
@@ -97,7 +97,7 @@ class UserSeeder extends Seeder {
             'email' => 'ppu@myfex.com',
             'role_id' => 5,
             'staff' => true,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
 
         User::factory()->create([
@@ -106,7 +106,7 @@ class UserSeeder extends Seeder {
             'email' => 'kpp@myfex.com',
             'role_id' => 6,
             'staff' => true,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
 
         User::factory()->create([
@@ -115,7 +115,7 @@ class UserSeeder extends Seeder {
             'email' => 'pengarah@myfex.com',
             'role_id' => 7,
             'staff' => true,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
 
         User::factory()->create([
@@ -124,7 +124,7 @@ class UserSeeder extends Seeder {
             'email' => 'pendaftar@myfex.com',
             'role_id' => 8,
             'staff' => true,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
 
         User::factory()->create([
@@ -133,7 +133,7 @@ class UserSeeder extends Seeder {
             'email' => 'superadmin@myfex.com',
             'role_id' => 9,
             'staff' => true,
-            'status' => User::DILULUSKAN
+            'status' => User::DILULUS
         ]);
     }
 

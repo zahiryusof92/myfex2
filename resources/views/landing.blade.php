@@ -64,7 +64,7 @@
 
                                 @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link nav-menu" href="{{ route('register') }}">REGISTER</a>
+                                    <a class="nav-link nav-menu" href="{{ route('register') }}">DAFTAR</a>
                                 </li>
                                 @endif
                             </ul>
