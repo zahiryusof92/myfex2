@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    <h4 class="page-title">Maklumat Syarikat</h4>
+                    <h4 class="page-title">Maklumat Jenama</h4>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('brandRights.index') }}">Senarai Jenama</a></li>
