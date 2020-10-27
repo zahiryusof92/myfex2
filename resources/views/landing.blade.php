@@ -47,7 +47,7 @@
             <div id="header" class="style-1">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="{{ url('/') }}">
                             <img src="{{ asset('assets/images/logo.png')}}" alt="" style="width: 150px;">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
