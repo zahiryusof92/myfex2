@@ -66,10 +66,10 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <label for="email"><span class="text-danger">* </span>E-mel Syarikat</label>
+                                <label for="email">E-mel Syarikat</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="" autocomplete="email" required>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="" autocomplete="email">
                             </div>
                         </div>
                         <div class="form-group row">

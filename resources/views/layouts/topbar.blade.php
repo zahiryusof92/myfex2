@@ -23,8 +23,12 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
+                        <a class="dropdown-item" href="{{ route('profile.index') }}">
+                            <i class="mdi mdi-account-circle m-r-5"></i> Profile Saya
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            <i class="mdi mdi-power text-danger"></i> Logout
+                            <i class="mdi mdi-power m-r-5 text-danger"></i> Logout
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
