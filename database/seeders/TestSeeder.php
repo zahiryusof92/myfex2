@@ -108,7 +108,7 @@ class TestSeeder extends Seeder {
                     $brand1 = Brand::factory()->create([
                         'name' => 'BrandOne',
                         'company' => 'Brand Company One',
-                        'country_id' => 226
+                        'country_id' => 129
                     ]);
                     if ($brand1) {
                         BrandRights::factory()->create([
@@ -178,7 +178,7 @@ class TestSeeder extends Seeder {
                     $brand3 = Brand::factory()->create([
                         'name' => 'BrandThree',
                         'company' => 'Brand Company Three',
-                        'country_id' => 226
+                        'country_id' => 107
                     ]);
                     if ($brand3) {
                         BrandRights::factory()->create([
@@ -213,7 +213,7 @@ class TestSeeder extends Seeder {
                     $brand4 = Brand::factory()->create([
                         'name' => 'BrandFour',
                         'company' => 'Brand Company Four',
-                        'country_id' => 226
+                        'country_id' => 211
                     ]);
                     if ($brand4) {
                         BrandRights::factory()->create([
@@ -248,7 +248,7 @@ class TestSeeder extends Seeder {
                     $brand5 = Brand::factory()->create([
                         'name' => 'BrandFive',
                         'company' => 'Brand Company Five',
-                        'country_id' => 226
+                        'country_id' => 232
                     ]);
                     if ($brand5) {
                         BrandRights::factory()->create([
@@ -318,7 +318,7 @@ class TestSeeder extends Seeder {
                     $brand7 = Brand::factory()->create([
                         'name' => 'BrandSeven',
                         'company' => 'Brand Company Seven',
-                        'country_id' => 226
+                        'country_id' => 129
                     ]);
                     if ($brand7) {
                         BrandRights::factory()->create([
@@ -439,7 +439,7 @@ class TestSeeder extends Seeder {
                         $brand9 = Brand::factory()->create([
                             'name' => 'BrandNine',
                             'company' => 'Brand Company Nine',
-                            'country_id' => 226
+                            'country_id' => 232
                         ]);
                         if ($brand9) {
                             BrandRights::factory()->create([
@@ -463,7 +463,7 @@ class TestSeeder extends Seeder {
                         $brand10 = Brand::factory()->create([
                             'name' => 'BrandTen',
                             'company' => 'Brand Company Ten',
-                            'country_id' => 226
+                            'country_id' => 129
                         ]);
                         if ($brand10) {
                             BrandRights::factory()->create([
