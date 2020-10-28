@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
         'company' => CompanyController::class,
         'brandRights' => BrandRightsController::class,
     ]);
+    Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
+
 
     Route::middleware('superadmin')->group(function () {
         Route::get('/page/{page}', [LexaController::class, 'index']);

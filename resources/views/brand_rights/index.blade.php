@@ -28,7 +28,19 @@
     <div class="row">
         <div class="col-12">
             <div class="card m-b-20">
-                @if (Auth::user()->isConsultant())
+                @if (Auth::user()->isUser())
+                @if (App\Models\BrandRights::getApprovedOwnBrand())
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="{{ route('brandRights.create') }}" class="btn btn-primary w-md waves-effect waves-light">
+                                Daftar Jenama <i class="mdi mdi-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @elseif (Auth::user()->isConsultant())
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12">
@@ -91,7 +103,7 @@ $(document).ready(function () {
             {data: 'company_name', name: 'company_name'},
             {data: 'franchise_type', name: 'franchise_type'},
             {data: 'status', name: 'status'},
-            {data: 'created_at', name: 'created_at'}            
+            {data: 'created_at', name: 'created_at'}
         ],
         order: [7, 'desc']
     });

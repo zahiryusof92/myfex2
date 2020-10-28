@@ -30,100 +30,190 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if (Auth::user()->isUser())
                     <form class="form-horizontal" method="POST" action="" data-parsley-validate>
-
+                        <h6>Maklumat Jenama</h6>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <label for="name"><span class="text-danger">* </span>Nama Syarikat</label>
+                                <label for="brand_name"><span class="text-danger">* </span>Nama Jenama</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="" autocomplete="name" required>
+                                <input type="text" class="form-control" id="brand_name" name="brand_name" value="{{ old('brand_name') }}" autocomplete="brand_name" autofocus required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <label for="name_old">Nama Syarikat (Lama)</label>
+                                <label for="brand_company"><span class="text-danger">* </span>Nama Syarikat Pemegang Jenama</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="name_old" name="name_old" value="{{ old('name_old') }}" placeholder="" autocomplete="name_old">
+                                <input type="text" class="form-control" id="brand_company" name="brand_company" value="{{ old('brand_company') }}" autocomplete="brand_company" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <label for="reg_no"><span class="text-danger">* </span>No. Pendaftaran Syarikat</label>
+                                <label for="brand_country"><span class="text-danger">* </span>Negara Asal Jenama</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="reg_no" name="reg_no" value="{{ old('reg_no') }}" placeholder="" autocomplete="reg_no" data-parsley-type="alphanum" minlength="12" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="reg_no_old">No. Pendaftaran Syarikat (Lama)</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="reg_no_old" name="reg_no_old" value="{{ old('reg_no_old') }}" placeholder="" autocomplete="reg_no_old">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="email">E-mel Syarikat</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="" autocomplete="email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="phone_no"><span class="text-danger">* </span>No. Telefon Syarikat</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="phone_no" name="phone_no" value="{{ old('phone_no') }}" placeholder="" autocomplete="phone_no" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="reg_address"><span class="text-danger">* </span>Alamat Pendaftaran Syarikat</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="reg_address" name="reg_address" value="{{ old('reg_address') }}" placeholder="" autocomplete="reg_address" required>
-                                <input type="text" class="form-control" id="reg_address2" name="reg_address2" value="{{ old('reg_address2') }}" placeholder="" autocomplete="reg_address2">
-                                <input type="text" class="form-control" id="reg_address3" name="reg_address3" value="{{ old('reg_address3') }}" placeholder="" autocomplete="reg_address3">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="buss_address"><span class="text-danger">* </span>Alamat Perniagaan Syarikat</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="buss_address" name="buss_address" value="{{ old('buss_address') }}" placeholder="" autocomplete="buss_address" required>
-                                <input type="text" class="form-control" id="buss_address2" name="buss_address2" value="{{ old('buss_address2') }}" placeholder="" autocomplete="buss_address2">
-                                <input type="text" class="form-control" id="buss_address3" name="buss_address3" value="{{ old('buss_address3') }}" placeholder="" autocomplete="buss_address3">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="ssm_cert"><span class="text-danger">* </span>Sijil Pendaftaran Syarikat Malaysia (SSM)</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="file" class="filestyle" id="ssm_cert" name="ssm_cert" data-input="true" data-buttonname="btn-secondary" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="letter_of_authority"><span class="text-danger">* </span>Surat Perwakilan Kuasa</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="file" class="filestyle" id="letter_of_authority" name="letter_of_authority" data-input="true" data-buttonname="btn-secondary" required>
+                                {{ Form::select('brand_country', $countryList, false, array('class' => 'form-control select2', 'required')) }}
                             </div>
                         </div>
 
-                        <div class="form-group row m-t-30">
+                        <h6>Maklumat Hak Penggunaan Jenama di Malaysia</h6>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="company_name">Nama Syarikat Berhak Untuk Penggunaan Jenama</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="company_name" name="company_name" value="{{ Auth::user()->company->name }}" autocomplete="company_name" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="company_reg_no">No. Pendaftaran Syarikat Berhak Untuk Penggunaan Jenama</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="company_reg_no" name="company_reg_no" value="{{ Auth::user()->company->reg_no }}" autocomplete="company_reg_no" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="franchise_type"><span class="text-danger">* </span>Peranan (Pemberi Francais / Francaisi Induk)</label>
+                            </div>
+                            <div class="col-sm-8">
+                                {{ Form::select('franchise_type', $franchiseTypeList, false, array('class' => 'form-control', 'required')) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="myipo_ref_no"><span class="text-danger">* </span>No. Rujukan MyIPO</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="myipo_ref_no" name="myipo_ref_no" value="{{ old('myipo_ref_no') }}" autocomplete="myipo_ref_no" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="deed_of_assigment"><span class="text-danger">* </span>Deed of Assignment (DoA)</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control-file" id="deed_of_assigment" name="deed_of_assigment" data-input="true" data-buttonname="btn-secondary" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="start_date"><span class="text-danger">* </span>Tarikh Mula DoA</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ old('start_date') }}" autocomplete="start_date" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="end_date"><span class="text-danger">* </span>Tarikh Akhir DoA</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ old('end_date') }}" autocomplete="end_date" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">                                
                             <div class="col-12 text-right">
                                 <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Hantar <i class="mdi mdi-send"></i></button>
                             </div>
                         </div>
-
                     </form>
+                    @elseif (Auth::user()->isConsultant())
+                    <form class="form-horizontal" method="POST" action="" data-parsley-validate>
+                        <h6>Maklumat Jenama</h6>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="brand_name"><span class="text-danger">* </span>Nama Jenama</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="brand_name" name="brand_name" value="{{ old('brand_name') }}" autocomplete="brand_name" autofocus required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="brand_company"><span class="text-danger">* </span>Nama Syarikat Pemegang Jenama</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="brand_company" name="brand_company" value="{{ old('brand_company') }}" autocomplete="brand_company" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="brand_country"><span class="text-danger">* </span>Negara Asal Jenama</label>
+                            </div>
+                            <div class="col-sm-8">
+                                {{ Form::select('brand_country', $countryList, false, array('class' => 'form-control select2', 'required')) }}
+                            </div>
+                        </div>
+
+                        <h6>Maklumat Hak Penggunaan Jenama di Malaysia</h6>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="company_name">Nama Syarikat Berhak Untuk Penggunaan Jenama</label>
+                            </div>
+                            <div class="col-sm-8">
+                                {{ Form::select('company_name', $companyList, false, array('id' => 'company_name', 'class' => 'form-control select2', 'onChange' => 'getRegNo()', 'required')) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="company_reg_no">No. Pendaftaran Syarikat Berhak Untuk Penggunaan Jenama</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="company_reg_no" name="company_reg_no" value="" autocomplete="company_reg_no" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="franchise_type"><span class="text-danger">* </span>Peranan (Pemberi Francais / Francaisi Induk)</label>
+                            </div>
+                            <div class="col-sm-8">
+                                {{ Form::select('franchise_type', $franchiseTypeList, false, array('class' => 'form-control', 'required')) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="myipo_ref_no"><span class="text-danger">* </span>No. Rujukan MyIPO</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="myipo_ref_no" name="myipo_ref_no" value="{{ old('myipo_ref_no') }}" autocomplete="myipo_ref_no" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="deed_of_assigment"><span class="text-danger">* </span>Deed of Assignment (DoA)</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control-file" id="deed_of_assigment" name="deed_of_assigment" data-input="true" data-buttonname="btn-secondary" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="start_date"><span class="text-danger">* </span>Tarikh Mula DoA</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ old('start_date') }}" autocomplete="start_date" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="end_date"><span class="text-danger">* </span>Tarikh Akhir DoA</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ old('end_date') }}" autocomplete="end_date" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">                                
+                            <div class="col-12 text-right">
+                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Hantar <i class="mdi mdi-send"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -131,4 +221,26 @@
 
 </div>
 
+@endsection
+
+@section('script')
+<script>
+    function getRegNo() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{ route('brandRights.getRegNo') }}",
+            type: "post",
+            data: {
+                id: $('#company_name').val()
+            },
+            success: function (response) {
+                $('#company_reg_no').val(response);
+            }
+        });
+    }
+</script>
 @endsection

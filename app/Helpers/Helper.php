@@ -3,14 +3,18 @@
 namespace App\Helpers;
 
 use App\Models\Country;
+use App\Models\Company;
 
 class Helper {
+    
+    const PEMBERI_FRANCAIS = 1;
+    const FRANCAISI_INDUK = 2;
 
     public static function typeFranchiseList() {
         $franchise_type = array(
             '' => '- Sila Pilih - ',
-            '1' => 'Pemberi Francais',
-            '2' => 'Pemegang Francais',
+            self::PEMBERI_FRANCAIS => 'Pemberi Francais',
+            self::FRANCAISI_INDUK => 'Francaisi Induk',
         );
 
         return $franchise_type;
@@ -22,11 +26,18 @@ class Helper {
 
         return $country;
     }
+    
+    public static function getCompanyByConsultant($consultant_id) {
+        $company = ['' => '- Sila Pilih - '];
+        $company += Company::where('consultant', false)->where('consultant_id', $consultant_id)->where('status', Company::DILULUS)->orderBy('name', 'asc')->pluck('name', 'id')->toArray();
+
+        return $company;
+    }
 
     public static function getFranchiseType($type) {
-        if ($type == 1) {
-            $franchise_type = "Francaisor";
-        } else if ($type == 1) {
+        if ($type == self::PEMBERI_FRANCAIS) {
+            $franchise_type = "Pemberi Francais";
+        } else if ($type == self::FRANCAISI_INDUK) {
             $franchise_type = "Francaisi Induk";
         } else {
             $franchise_type = '<i>(not set)</i>';

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use App\Helpers\Helper;
 use App\Models\BrandRights;
+use App\Models\Company;
 
 class BrandRightsController extends Controller {
 
@@ -86,7 +87,16 @@ class BrandRightsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('brand_rights.create');
+        $countryList = Helper::countryList();
+        $franchiseTypeList = Helper::typeFranchiseList();
+        if (Auth::user()->isConsultant()) {
+            $companyList = Helper::getCompanyByConsultant(Auth::user()->id);
+        } else {
+            $companyList = '';
+        }
+
+
+        return view('brand_rights.create', compact('countryList', 'franchiseTypeList', 'companyList'));
     }
 
     /**
@@ -109,8 +119,13 @@ class BrandRightsController extends Controller {
         $brandRights = BrandRights::findOrFail($id);
         $countryList = Helper::countryList();
         $franchiseTypeList = Helper::typeFranchiseList();
+        if (Auth::user()->isConsultant()) {
+            $companyList = Helper::getCompanyByConsultant(Auth::user()->id);
+        } else {
+            $companyList = '';
+        }
 
-        return view('brand_rights.show', compact('brandRights', 'countryList', 'franchiseTypeList'));
+        return view('brand_rights.show', compact('brandRights', 'countryList', 'franchiseTypeList', 'companyList'));
     }
 
     /**
@@ -142,6 +157,20 @@ class BrandRightsController extends Controller {
      */
     public function destroy($id) {
         //
+    }
+
+    public function getRegNo(Request $request) {
+        $company_reg_no = '';
+
+        if ($request->ajax()) {
+            $company = Company::findOrFail($request->id);
+
+            if ($company) {
+                $company_reg_no = $company->reg_no;
+            }
+
+            return $company_reg_no;
+        }
     }
 
 }

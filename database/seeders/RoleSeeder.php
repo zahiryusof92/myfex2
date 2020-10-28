@@ -13,15 +13,16 @@ class RoleSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        Role::create(['name' => 'Pengguna Perniagaan Francais']);
-        Role::create(['name' => 'Pengguna Konsultan Francais']);
-        Role::create(['name' => 'Pegawai Proses (Kewangan & Pemasaran)']);
-        Role::create(['name' => 'Pegawai Proses (Francais)']);
-        Role::create(['name' => 'Pegawai Proses (Utama)']);
-        Role::create(['name' => 'Ketua Pegawai Proses']);
-        Role::create(['name' => 'Pengarah']);
-        Role::create(['name' => 'Pendaftar']);
-        Role::create(['name' => 'Super Admin']);
+        Role::create(['name' => 'Pengguna Perniagaan Francais']); // 1
+        Role::create(['name' => 'Pengguna Konsultan Francais']); // 2
+        Role::create(['name' => 'Pegawai Proses (Kewangan & Pemasaran)']); // 3
+        Role::create(['name' => 'Pegawai Proses (Francais)']); // 4
+        Role::create(['name' => 'Pegawai Proses (Dasar)']); // 5
+        Role::create(['name' => 'Pegawai Proses (Utama)']); // 6
+        Role::create(['name' => 'Ketua Pegawai Proses']); // 7
+        Role::create(['name' => 'Pengarah']); // 8
+        Role::create(['name' => 'Pendaftar']); // 9
+        Role::create(['name' => 'Super Admin']); // 10
     }
 
 }

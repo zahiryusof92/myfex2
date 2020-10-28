@@ -21,7 +21,7 @@ class CompanyFactory extends Factory {
      */
     public function definition() {
         static $count = 1;
-        static $reg = 10;
+        static $reg = 11;
 
         return [
             'name' => 'Company ' . $count,

@@ -60,6 +60,24 @@ class BrandRights extends Model {
         return $total;
     }
 
+    public static function getApprovedOwnBrand() {
+        $result = true;
+
+        $pending = BrandRights::where('company_id', Auth::user()->company_id)
+                ->where(function($query) {
+                    $query->where('status', SELF::BARU)
+                    ->orWhere('status', SELF::DISYOR)
+                    ->orWhere('status', SELF::DISOKONG)
+                    ->orWhere('status', SELF::DIPERAKUI);
+                })
+                ->count();
+        if ($pending > 0) {
+            $result = false;
+        }
+
+        return $result;
+    }
+
     public function brand() {
         return $this->belongsTo('App\Models\Brand');
     }

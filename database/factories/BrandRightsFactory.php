@@ -23,7 +23,7 @@ class BrandRightsFactory extends Factory {
         static $count = 1;
 
         return [
-            'myipo_ref_no' => 'MYIPO-00' . $count++,
+            'myipo_ref_no' => 'MYIPO-000' . $count++,
             'deed_of_assigment' => 'assets/uploads/deed_of_assigment.pdf',
             'consultant_id' => 0,
         ];

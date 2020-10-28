@@ -13,7 +13,7 @@ class User extends Authenticatable {
     use HasFactory,
         Notifiable;
 
-    const DRAFT = 0;
+    const DRAF = 0;
     const BARU = 1;
     const DINILAI = 2;
     const DILULUS = 3;
@@ -109,6 +109,10 @@ class User extends Authenticatable {
 
     public function isPPF() {
         return $this->role->name === 'Pegawai Proses (Francais)';
+    }
+    
+    public function isDasar() {
+        return $this->role->name === 'Pegawai Proses (Dasar)';
     }
 
     public function isKPP() {
