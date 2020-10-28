@@ -149,7 +149,7 @@ class TestSeeder extends Seeder {
                         BrandRights::factory()->create([
                             'brand_id' => $brand2->id,
                             'company_id' => $company6->id,
-                            'franchise_type_id' => Helper::FRANCAIS_INDUK,
+                            'franchise_type_id' => Helper::FRANCAISI_INDUK,
                             'start_date' => '2020-10-01',
                             'end_date' => '2030-10-01',
                             'consultant_id' => 0,
@@ -219,7 +219,7 @@ class TestSeeder extends Seeder {
                         BrandRights::factory()->create([
                             'brand_id' => $brand4->id,
                             'company_id' => $company8->id,
-                            'franchise_type_id' => Helper::FRANCAIS_INDUK,
+                            'franchise_type_id' => Helper::FRANCAISI_INDUK,
                             'start_date' => '2020-10-01',
                             'end_date' => '2030-10-01',
                             'consultant_id' => 0,
@@ -445,7 +445,7 @@ class TestSeeder extends Seeder {
                             BrandRights::factory()->create([
                                 'brand_id' => $brand9->id,
                                 'company_id' => $com2->id,
-                                'franchise_type_id' => Helper::FRANCAIS_INDUK,
+                                'franchise_type_id' => Helper::FRANCAISI_INDUK,
                                 'start_date' => '2020-10-01',
                                 'end_date' => '2030-10-01',
                                 'consultant_id' => $user1->id,
