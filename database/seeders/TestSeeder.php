@@ -529,7 +529,7 @@ class TestSeeder extends Seeder {
                 'email' => 'akauntan@myfex.com',
                 'role_id' => $role3->id,
                 'staff' => true,
-                'status' => User::DITOLAK
+                'status' => User::DILULUS
             ]);
         }
 
