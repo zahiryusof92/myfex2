@@ -62,7 +62,7 @@
                             <tr>
                                 <th>Jenama</th>
                                 <th>No. Pendaftaran Syarikat</th>
-                                <th>Name Syarikat</th>
+                                <th>Nama Syarikat</th>
                                 <th>Status</th>
                                 <th>Tarikh Permohonan</th>                                
                             </tr>
