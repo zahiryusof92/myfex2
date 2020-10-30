@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use App\Helpers\Helper;
 use App\Models\Role;
 use App\Models\User;
@@ -18,6 +19,11 @@ class TestSeeder extends Seeder {
      * @return void
      */
     public function run() {
+        DB::table('roles')->truncate();
+        DB::table('companies')->truncate();
+        DB::table('users')->truncate();
+        DB::table('brands')->truncate();
+        DB::table('brand_rights')->truncate();
 
         $role1 = Role::create(['name' => 'Pengguna Perniagaan Francais']);
         if ($role1) {
@@ -429,7 +435,7 @@ class TestSeeder extends Seeder {
                             ]);
                         }
                     }
-                    
+
                     $com2 = Company::factory()->create([
                         'consultant' => false,
                         'status' => Company::DILULUS,
@@ -453,7 +459,7 @@ class TestSeeder extends Seeder {
                             ]);
                         }
                     }
-                    
+
                     $com3 = Company::factory()->create([
                         'consultant' => false,
                         'status' => Company::DILULUS,
@@ -477,7 +483,7 @@ class TestSeeder extends Seeder {
                             ]);
                         }
                     }
-                    
+
                     $com4 = Company::factory()->create([
                         'consultant' => false,
                         'status' => Company::DINILAI,
@@ -495,7 +501,7 @@ class TestSeeder extends Seeder {
                         'status' => Company::DRAF,
                         'consultant_id' => $user1->id
                     ]);
-                    
+
                     $com7 = Company::factory()->create([
                         'consultant' => false,
                         'status' => Company::DITOLAK,

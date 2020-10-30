@@ -13,7 +13,7 @@ class PostcodeMelakaSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 4)->delete();
+        DB::table('postcodes')->where('state_id', 4)->truncate();
         
         $melaka = [
             ['state_id' => 4, 'code' => '75000', 'name' => 'Bandar Hilir'],

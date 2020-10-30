@@ -13,7 +13,7 @@ class PostcodeKedahSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 2)->delete();
+        DB::table('postcodes')->where('state_id', 2)->truncate();
 
         $kedah = [
             ['state_id' => 2, 'code' => '05000', 'name' => 'Jalan Istana Lama'],

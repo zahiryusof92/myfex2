@@ -13,7 +13,7 @@ class PostcodeN9Seeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 5)->delete();
+        DB::table('postcodes')->where('state_id', 5)->truncate();
         
         $negeriSembilan = [
             ['state_id' => 5, 'code' => '70000', 'name' => 'Pusat Perniagaan Templer'],

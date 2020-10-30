@@ -13,7 +13,7 @@ class PostcodeKelantanSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 3)->delete();
+        DB::table('postcodes')->where('state_id', 3)->truncate();
 
         $kelantan = [
             ['state_id' => 3, 'code' => '15000', 'name' => 'Amanah Saham Nasional'],

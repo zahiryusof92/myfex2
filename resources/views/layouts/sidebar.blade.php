@@ -37,29 +37,14 @@
                         </li>
                     </ul>
                 </li>
-                @endif
-                @if (App\Models\BrandRights::getApproved())
-                <li class="{{ (request()->is('franchisor*')) ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('franchisor*')) ? 'active' : '' }}">
+                <li class="{{ (request()->is('application*')) ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('application*')) ? 'active' : '' }}">
                         <i class="mdi mdi-file-tree"></i>
-                        <span> Pemberi Francais <span class="badge badge-pill badge-danger"></span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                        <span> Permohonan <span class="badge badge-pill badge-danger">{{ App\Models\Application::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
-                    <ul class="submenu {{ (request()->is('franchisor*')) ? 'collapse in' : '' }}">
-                        <li class="{{ (request()->is('franchisor*')) ? 'active' : '' }}">
-                            <a href="{{ route('franchisor.index') }}">Senarai Pemberi Francais</a>
-                        </li>
-                    </ul>
-                </li>
-                @endif
-                @if (App\Models\Company::getApproved())
-                <li class="{{ (request()->is('franchise*')) ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('franchise*')) ? 'active' : '' }}">
-                        <i class="mdi mdi-briefcase"></i>
-                        <span> Pemegang Francais <span class="badge badge-pill badge-danger"></span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
-                    </a>
-                    <ul class="submenu {{ (request()->is('franchise*')) ? 'collapse in' : '' }}">
-                        <li class="{{ (request()->is('franchise*')) ? 'active' : '' }}">
-                            <a href="{{ route('franchise.index') }}">Senarai Pemegang Francais</a>
+                    <ul class="submenu {{ (request()->is('application*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('application*')) ? 'active' : '' }}">
+                            <a href="{{ route('application.index') }}">Senarai Permohonan</a>
                         </li>
                     </ul>
                 </li>

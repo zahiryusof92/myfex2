@@ -13,7 +13,7 @@ class PostcodeJohorSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 1)->delete();
+        DB::table('postcodes')->where('state_id', 1)->truncate();
         
         $johor = [
             ['state_id' => 1, 'code' => '79000', 'name' => 'Puteri Harbour'],

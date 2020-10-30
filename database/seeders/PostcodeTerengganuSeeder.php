@@ -13,7 +13,7 @@ class PostcodeTerengganuSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 11)->delete();
+        DB::table('postcodes')->where('state_id', 11)->truncate();
         
         $terengganu = [
             ['state_id' => 11, 'code' => '20000', 'name' => 'Hotel Tanjung Vista'],

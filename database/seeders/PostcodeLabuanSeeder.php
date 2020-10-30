@@ -13,7 +13,7 @@ class PostcodeLabuanSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 15)->delete();
+        DB::table('postcodes')->where('state_id', 15)->truncate();
         
         $wpLabuan = [
             ['state_id' => 15, 'code' => '87010', 'name' => 'Labuan - Peti surat 80001 - 80100'],

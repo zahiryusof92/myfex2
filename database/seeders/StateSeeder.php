@@ -13,7 +13,7 @@ class StateSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('states')->delete();
+        DB::table('states')->truncate();
 
         $states = [
             ['name' => 'JOHOR', 'name_long' => 'JOHOR DARUL TAKZIM', 'code2' => 'JH', 'code3' => 'JOH', 'capital' => 'JOHOR BAHRU', 'country_id' => 129],

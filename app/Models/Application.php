@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class BrandRights extends Model {
+class Application extends Model {
 
     use HasFactory;
 
@@ -42,9 +42,9 @@ class BrandRights extends Model {
 
     public static function getApproved() {
         if (Auth::user()->isUser()) {
-            $approved = BrandRights::where('company_id', Auth::user()->company_id)->where('status', SELF::DILULUS)->count();
+            $approved = Application::where('company_id', Auth::user()->company_id)->where('status', SELF::DILULUS)->count();
         } else if (Auth::user()->isConsultant()) {
-            $approved = BrandRights::where('consultant_id', Auth::user()->id)->where('status', SELF::DILULUS)->count();
+            $approved = Application::where('consultant_id', Auth::user()->id)->where('status', SELF::DILULUS)->count();
         }
 
         if ($approved) {
@@ -58,38 +58,23 @@ class BrandRights extends Model {
         $total = 0;
 
         if (Auth::user()->isUser()) {
-            $total = BrandRights::where('company_id', Auth::user()->company_id)->where('status', SELF::DRAF)->count();
+            $total = Application::where('company_id', Auth::user()->company_id)->where('status', SELF::DRAF)->count();
         } else if (Auth::user()->isConsultant()) {
-            $total = BrandRights::where('consultant_id', Auth::user()->id)->where('status', SELF::DRAF)->count();
+            $total = Application::where('consultant_id', Auth::user()->id)->where('status', SELF::DRAF)->count();
         } else if (Auth::user()->isPPU()) {
-            $total = BrandRights::where('status', SELF::BARU)->count();
+            $total = Application::where('status', SELF::BARU)->count();
         } else if (Auth::user()->isKPP()) {
-            $total = BrandRights::where('status', SELF::DISYOR)->count();
+            $total = Application::where('status', SELF::DISYOR)->count();
         } else if (Auth::user()->isPengarah()) {
-            $total = BrandRights::where('status', SELF::DISOKONG)->count();
+            $total = Application::where('status', SELF::DISOKONG)->count();
         } else if (Auth::user()->isPendaftar()) {
-            $total = BrandRights::where('status', SELF::DIPERAKUI)->count();
+            $total = Application::where('status', SELF::DIPERAKUI)->count();
         }
 
         return $total;
     }
 
-    public static function getApprovedOwnBrand() {
-        $result = false;
-
-        $brandRights = BrandRights::where('company_id', Auth::user()->company_id)->count();
-        if ($brandRights) {
-            $approved = BrandRights::where('company_id', Auth::user()->company_id)->where('status', SELF::DILULUS)->count();
-
-            if ($approved) {
-                $result = true;
-            }
-        }
-
-        return $result;
-    }
-
-    public function brand() {
+    public function brandRights() {
         return $this->belongsTo('App\Models\Brand');
     }
 

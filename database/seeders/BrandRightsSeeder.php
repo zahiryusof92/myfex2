@@ -12,7 +12,7 @@ class BrandRightsSeeder extends Seeder {
      *
      * @return void
      */
-    public function run() {
+    public function run() {        
         BrandRights::factory()->create([
             'brand_id' => 1,
             'company_id' => 4,

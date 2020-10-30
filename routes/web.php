@@ -6,8 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BrandRightsController;
-use App\Http\Controllers\FranchiseController;
-use App\Http\Controllers\FranchisorController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\LexaController;
 
 /*
@@ -39,8 +38,7 @@ Route::middleware('auth')->group(function () {
         'user' => UserController::class,
         'company' => CompanyController::class,
         'brandRights' => BrandRightsController::class,
-        'franchisor' => FranchisorController::class,
-        'franchise' => FranchiseController::class,
+        'application' => ApplicationController::class,
     ]);
     Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
 

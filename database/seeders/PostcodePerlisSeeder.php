@@ -13,7 +13,7 @@ class PostcodePerlisSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 9)->delete();
+        DB::table('postcodes')->where('state_id', 9)->truncate();
         
         $perlis = [
             ['state_id' => 9, 'code' => '01000', 'name' => 'Taman Jawi Matang'],

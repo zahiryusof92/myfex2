@@ -13,7 +13,7 @@ class PostcodeKLSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 14)->delete();
+        DB::table('postcodes')->where('state_id', 14)->truncate();
 
         $wpKualaLumpur = [
             ['state_id' => 14, 'code' => '50000', 'name' => 'Bangunan Bangkok Bank'],

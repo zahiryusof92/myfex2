@@ -13,7 +13,7 @@ class PostcodeSabahSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 12)->delete();
+        DB::table('postcodes')->where('state_id', 12)->truncate();
         
         $sabah = [
             ['state_id' => 12, 'code' => '88000', 'name' => 'Bangunan Asia City'],

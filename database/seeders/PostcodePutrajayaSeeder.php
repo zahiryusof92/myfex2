@@ -13,7 +13,7 @@ class PostcodePutrajayaSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('postcodes')->where('state_id', 16)->delete();
+        DB::table('postcodes')->where('state_id', 16)->truncate();
         
         $wpPutrajaya = [
             ['state_id' => 16, 'code' => '62000', 'name' => 'Putrajaya - (Presint 1)'],
