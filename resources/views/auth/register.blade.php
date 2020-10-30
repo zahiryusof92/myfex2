@@ -7,7 +7,7 @@
         <div class="card-body">
 
             <h3 class="text-center m-0">
-                <a href="index" class="logo logo-admin">
+                <a href="{{ url('/') }}" class="logo logo-admin">
                     <img src="{{ asset('assets/images/logo.png') }}" height="70" alt="logo">
                 </a>
             </h3>
