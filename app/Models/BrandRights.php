@@ -40,6 +40,20 @@ class BrandRights extends Model {
         return $status;
     }
 
+    public static function getApproved() {
+        if (Auth::user()->isUser()) {
+            $approved = BrandRights::where('company_id', Auth::user()->company_id)->where('status', SELF::DILULUS)->count();
+        } else if (Auth::user()->isConsultant()) {
+            $approved = BrandRights::where('consultant_id', Auth::user()->id)->where('status', SELF::DILULUS)->count();
+        }
+
+        if ($approved) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static function getTotalPending() {
         $total = 0;
 

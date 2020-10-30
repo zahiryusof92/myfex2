@@ -33,12 +33,32 @@ class Company extends Model {
 
         return $status;
     }
+    
+    public static function getApproved() {
+        if (Auth::user()->isUser()) {
+            $approved = Company::where('id', Auth::user()->company_id)->where('status', SELF::DILULUS)->count();
+        } else if (Auth::user()->isConsultant()) {
+            $approved = Company::where('consultant_id', Auth::user()->id)->where('status', SELF::DILULUS)->count();
+        }
+
+        if ($approved) {
+            return true;
+        }
+
+        return false;
+    }
 
     public static function getTotalPending() {
         $total = 0;
 
         if (Auth::user()->isUser()) {
             $total = Company::where('id', Auth::user()->company_id)
+                    ->where(function($query) {
+                        $query->where('status', SELF::DRAF);
+                    })
+                    ->count();
+        } else if (Auth::user()->isConsultant()) {
+            $total = Company::where('consultant_id', Auth::user()->company_id)
                     ->where(function($query) {
                         $query->where('status', SELF::DRAF);
                     })

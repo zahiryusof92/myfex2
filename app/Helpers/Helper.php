@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\Country;
+use App\Models\State;
 use App\Models\Company;
 
 class Helper {
@@ -25,6 +26,13 @@ class Helper {
         $country += Country::orderBy('nicename', 'asc')->pluck('nicename', 'id')->toArray();
 
         return $country;
+    }
+    
+    public static function malaysiaSateList() {
+        $state = ['' => '- Negeri - '];
+        $state += State::where('country_id', 129)->orderBy('name', 'asc')->pluck('name', 'id')->toArray();
+
+        return $state;
     }
     
     public static function getCompanyByConsultant($consultant_id) {

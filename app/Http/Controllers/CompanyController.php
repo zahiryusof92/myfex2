@@ -82,7 +82,7 @@ class CompanyController extends Controller {
      */
     public function show($id) {
         $company = Company::findOrFail($id);
-
+        
         return view('company.show', compact('company'));
     }
 

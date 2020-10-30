@@ -212,8 +212,8 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="reg_address" name="reg_address" value="{{ old('reg_address') ? old('reg_address') : $company->reg_address }}" placeholder="" autocomplete="reg_address" required>
-                                    <input type="text" class="form-control" id="reg_address2" name="reg_address2" value="{{ old('reg_address2') ? old('reg_address2') : $company->reg_address2 }}" placeholder="" autocomplete="reg_address2">
-                                    <input type="text" class="form-control" id="reg_address3" name="reg_address3" value="{{ old('reg_address3') ? old('reg_address3') : $company->reg_address3 }}" placeholder="" autocomplete="reg_address3">
+                                    <input type="text" class="form-control m-t-5" id="reg_address2" name="reg_address2" value="{{ old('reg_address2') ? old('reg_address2') : $company->reg_address2 }}" placeholder="" autocomplete="reg_address2">
+                                    <input type="text" class="form-control m-t-5" id="reg_address3" name="reg_address3" value="{{ old('reg_address3') ? old('reg_address3') : $company->reg_address3 }}" placeholder="" autocomplete="reg_address3">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -222,8 +222,8 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="buss_address" name="buss_address" value="{{ old('buss_address') ? old('buss_address') : $company->buss_address }}" placeholder="" autocomplete="buss_address" required>
-                                    <input type="text" class="form-control" id="buss_address2" name="buss_address2" value="{{ old('buss_address2') ? old('buss_address2') : $company->buss_address2 }}" placeholder="" autocomplete="buss_address2">
-                                    <input type="text" class="form-control" id="buss_address3" name="buss_address3" value="{{ old('buss_address3') ? old('buss_address3') : $company->buss_address3 }}" placeholder="" autocomplete="buss_address3">
+                                    <input type="text" class="form-control m-t-5" id="buss_address2" name="buss_address2" value="{{ old('buss_address2') ? old('buss_address2') : $company->buss_address2 }}" placeholder="" autocomplete="buss_address2">
+                                    <input type="text" class="form-control m-t-5" id="buss_address3" name="buss_address3" value="{{ old('buss_address3') ? old('buss_address3') : $company->buss_address3 }}" placeholder="" autocomplete="buss_address3">
                                 </div>
                             </div>
                             <div class="form-group row">
