@@ -12,7 +12,16 @@ Download the master branch
 git clone git@github.com:zahiryusof92/myfex2.git
 ```
 
-Make a copy `.env.example` and rename to `.env`
+Make a copy `.env.example`
+
+```bash
+cp .env.example .env
+```
+
+Generate Key
+```bash
+php artisan key:generate
+```
 
 Edit you `.env` to match your system, like app_name, database, email, etc
 
