@@ -23,9 +23,8 @@ class CreateCompaniesTable extends Migration {
             $table->string('reg_address')->nullable();
             $table->string('reg_address2')->nullable();
             $table->string('reg_address3')->nullable();
-            $table->string('reg_postcode_id')->nullable();
+            $table->string('reg_postcode')->nullable();
             $table->string('reg_city')->nullable();
-            $table->integer('reg_state_id')->unsigned()->nullable();
             $table->string('reg_country')->nullable();
             $table->string('buss_address')->nullable();
             $table->string('buss_address2')->nullable();
