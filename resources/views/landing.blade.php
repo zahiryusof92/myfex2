@@ -58,7 +58,7 @@
                             <ul class="navbar-nav ml-auto">
                                 @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link nav-menu" href="{{ route('login') }}">LOGIN</a>
+                                    <a class="nav-link nav-menu" href="{{ route('login') }}">LOG MASUK</a>
                                 </li>
                                 @endif
 
