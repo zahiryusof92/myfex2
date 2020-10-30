@@ -51,11 +51,13 @@
                         </div>
                     </div>
 
+                    @if (Route::has('password.request'))
                     <div class="form-group m-t-10 mb-0 row">
                         <div class="col-12 m-t-20">
-                            <a href="#" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Kata Laluan?</a>
+                            <a href="{{ route('password.request') }}" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Kata Laluan?</a>
                         </div>
                     </div>
+                    @endif
 
                 </form>
 
