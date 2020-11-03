@@ -15,11 +15,6 @@ class DatabaseSeeder extends Seeder {
         $this->call(CountrySeeder::class);
         $this->call(StateSeeder::class);
         $this->call(PostcodeSeeder::class);
-//        $this->call(UserSeeder::class);
-//        $this->call(RoleSeeder::class);
-//        $this->call(CompanySeeder::class);
-//        $this->call(BrandSeeder::class);
-//        $this->call(BrandRightsSeeder::class);
         $this->call(TestSeeder::class);
     }
 
