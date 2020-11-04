@@ -40,8 +40,11 @@ Route::middleware('auth')->group(function () {
         'brandRights' => BrandRightsController::class,
         'application' => ApplicationController::class,
     ]);
-    Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
 
+    Route::get('application/{id}/companyInfo', [ApplicationController::class, 'companyInfo'])->name('application.companyInfo');
+    Route::get('application/{id}/capitalEquity', [ApplicationController::class, 'capitalEquity'])->name('application.capitalEquity');
+
+    Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
 
     Route::middleware('superadmin')->group(function () {
         Route::get('/page/{page}', [LexaController::class, 'index']);

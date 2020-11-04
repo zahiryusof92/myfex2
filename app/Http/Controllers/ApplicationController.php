@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use App\Helpers\Helper;
+use App\Models\BrandRights;
 
 class ApplicationController extends Controller {
 
@@ -38,14 +39,14 @@ class ApplicationController extends Controller {
             }
 
             return DataTables::of($data)
-                            ->addColumn('brand_name', function ($row) {
-                                return '<a href="' . route('application.show', $row->id) . '"><u>' . $row->brand->name . '</u></a>';
+                            ->addColumn('franchise_type', function ($row) {
+                                if ($row->status == Application::DRAF) {
+                                    return '<a href="' . route('application.companyInfo', $row->id) . '"><u>' . Helper::getFranchiseType($row->franchise_type_id) . '</u></a>';
+                                }
+                                return '<a href="' . route('application.show', $row->id) . '"><u>' . Helper::getFranchiseType($row->franchise_type_id) . '</u></a>';
                             })
-                            ->addColumn('company_reg_no', function ($row) {
-                                return $row->company->reg_no;
-                            })
-                            ->addColumn('company_name', function ($row) {
-                                return $row->company->name;
+                            ->editColumn('status', function ($row) {
+                                return $row->getStatus();
                             })
                             ->editColumn('created_at', function($row) {
                                 $created_at = '<i>(not set)</i>';
@@ -55,10 +56,15 @@ class ApplicationController extends Controller {
 
                                 return $created_at;
                             })
-                            ->editColumn('status', function ($row) {
-                                return $row->getStatus();
+                            ->editColumn('updated_at', function($row) {
+                                $updated_at = '<i>(not set)</i>';
+                                if ($row->updated_at) {
+                                    $updated_at = Helper::getFormattedDate($row->updated_at, 'date');
+                                }
+
+                                return $updated_at;
                             })
-                            ->rawColumns(['brand_name', 'status', 'created_at'])
+                            ->rawColumns(['franchise_type', 'status', 'created_at', 'updated_at'])
                             ->make(true);
         }
 
@@ -71,6 +77,7 @@ class ApplicationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+
         return view('application.create');
     }
 
@@ -81,7 +88,21 @@ class ApplicationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+
+        $application = new Application();
+        $application->brand_id = $request->brand_id;
+        $application->company_id = $request->company_id;
+        if (Auth::user()->isConsultant()) {
+            $application->consultant_id = Auth::user()->id;
+        }
+        $application->franchise_type_id = $request->franchise_type_id;
+        $success = $application->save();
+
+        if ($success) {
+            return redirect()->route('application.edit', $application->id);
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -125,4 +146,31 @@ class ApplicationController extends Controller {
         //
     }
 
+    public function companyInfo($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
+            $path = 'franchisor';
+        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'master_franchisee';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.company_info', compact('application'));
+    }
+
+    public function capitalEquity($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
+            $path = 'franchisor';
+        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'master_franchisee';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.capital_equity', compact('application'));
+    }
 }

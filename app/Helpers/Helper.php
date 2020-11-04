@@ -10,6 +10,7 @@ class Helper {
     
     const PEMBERI_FRANCAIS = 1;
     const FRANCAISI_INDUK = 2;
+    const PEMEGANG_FRANCAIS = 3;
 
     public static function typeFranchiseList() {
         $franchise_type = array(
@@ -47,6 +48,8 @@ class Helper {
             $franchise_type = "Pemberi Francais";
         } else if ($type == self::FRANCAISI_INDUK) {
             $franchise_type = "Francaisi Induk";
+        } else if ($type == self::PEMEGANG_FRANCAIS) {
+            $franchise_type = "Pemegang Francais";
         } else {
             $franchise_type = '<i>(not set)</i>';
         }

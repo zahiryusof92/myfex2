@@ -22,11 +22,32 @@
                 <div class="card m-b-20">
                     <div class="card-header">
                         <div class="row">
+                            @if (Auth::user()->isUser() || Auth::user()->isConsultant())
+                            <div class="col-6">
+                                @if ($brandRights->status == App\Models\BrandRights::DILULUS)
+                                <form method="POST" action="{{ route('application.store') }}">
+                                    @csrf
+                                    <input type="hidden" name="brand_id" value="{{ $brandRights->brand->id }}"/>
+                                    <input type="hidden" name="company_id" value="{{ $brandRights->company->id }}"/>
+                                    <input type="hidden" name="franchise_type_id" value="{{ $brandRights->franchise_type_id }}"/>
+                                    <button type="submit" class="btn btn-primary w-md waves-effect waves-light m-r-5">
+                                        Daftar {{ App\Helpers\Helper::getFranchiseType($brandRights->franchise_type_id) }} <i class="mdi mdi-plus"></i>
+                                    </button>
+                                </form>
+                                @endif
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="{{ route('brandRights.index') }}" class="btn btn-danger w-md waves-effect waves-light">
+                                    <i class="mdi mdi-undo mdi-18px"></i> Kembali
+                                </a>
+                            </div>
+                            @else
                             <div class="col-12 text-right">
                                 <a href="{{ route('brandRights.index') }}" class="btn btn-danger w-md waves-effect waves-light">
                                     <i class="mdi mdi-undo mdi-18px"></i> Kembali
                                 </a>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body">
@@ -1138,7 +1159,7 @@
                         @endif
                         @endif
                         <!-- END KPP -->
-                        
+
                         @if (Auth::user()->isPengarah())
                         <h6>Maklumat Jenama</h6>                        
                         <dl class="row">
@@ -1213,7 +1234,7 @@
                             <dt class="col-sm-4">Ulasan Disokong</dt>
                             <dd class="col-sm-8">Maklumat permohonan disokong</dd>
                         </dl>
-                        
+
                         <h6>Maklumat Diperakui</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Ulasan Diperakui</dt>
@@ -1365,7 +1386,7 @@
                         @endif
                         @endif
                         <!-- END Pengarah -->
-                        
+
                         @if (Auth::user()->isPendaftar())
                         <h6>Maklumat Jenama</h6>                        
                         <dl class="row">
@@ -1452,7 +1473,7 @@
                             <dt class="col-sm-4">Ulasan Diperakui</dt>
                             <dd class="col-sm-8">Maklumat permohonan diperakui lengkap</dd>
                         </dl>
-                        
+
                         <h6>Maklumat Kelulusan</h6>
                         <dl class="row">
                             <dt class="col-sm-4">Keputusan Kelulusan</dt>
