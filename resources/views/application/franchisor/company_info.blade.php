@@ -123,3 +123,26 @@
 </div>
 
 @endsection
+
+@section('script')
+<script>
+    $(document).ready(function () {
+        $("form").on('submit', function (e) {
+            e.preventDefault();
+            var form = $(this);
+
+            form.parsley().validate();
+
+            if (form.parsley().isValid()) {
+                Swal.fire({
+                    title: 'Berjaya!',
+                    text: 'Maklumat berjaya dihantar!',
+                    type: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: "#58db83"
+                });
+            }
+        });
+    });
+</script>
+@endsection
