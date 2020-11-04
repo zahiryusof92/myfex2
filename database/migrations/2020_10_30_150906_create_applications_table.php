@@ -14,9 +14,10 @@ class CreateApplicationsTable extends Migration {
     public function up() {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->integer('brand_id')->unsigned();
-            $table->integer('company_id')->unsigned();
+            $table->integer('brand_id')->unsigned()->nullable();
+            $table->integer('company_id')->unsigned()->nullable();
             $table->integer('consultant_id')->unsigned()->nullable();
+            $table->integer('franchise_type_id')->unsigned()->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

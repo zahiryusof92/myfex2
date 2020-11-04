@@ -1,26 +1,7 @@
 @extends('layouts.master')
 
-@section('css')
-<style>
-    .form-section {
-        padding-left: 15px;
-        border-left: 2px solid #FF851B;
-        display: none;
-    }
-
-    .form-section.current {
-        display: inherit;
-    }
-
-    .form-navigation {
-        margin-top: 10px;
-    }
-</style>
-@endsection
-
 @section('content')
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
@@ -30,7 +11,7 @@
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
                     <li class="breadcrumb-item active">Daftar Pemegang Francais</li>
-                </ol>             
+                </ol>
 
             </div>
         </div>
@@ -51,7 +32,6 @@
                 </div>
                 <div class="card-body">
                     @if (Auth::user()->isUser())
-                    
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                         <li class="nav-item">
@@ -163,79 +143,14 @@
                             </div>
                         </div>
                     </form>
-
                     @elseif (Auth::user()->isConsultant())
-                    
+
                     @endif
 
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
-@endsection
-
-@section('script')
-<script type="text/javascript">
-    $(function () {
-        var $sections = $('.form-section');
-
-        function navigateTo(index) {
-            // Mark the current section with the class 'current'
-            $sections.removeClass('current').eq(index).addClass('current');
-
-            // Show only the navigation buttons that make sense for the current section:
-            $('.form-navigation .previous').toggle(index > 0);
-
-            var atTheEnd = index >= $sections.length - 1;
-            $('.form-navigation .next').toggle(!atTheEnd);
-            $('.form-navigation .finish').toggle(atTheEnd);
-        }
-
-        function curIndex() {
-            // Return the current index by looking at which section has the class 'current'
-            return $sections.index($sections.filter('.current'));
-        }
-
-        // Previous button is easy, just go back
-        $('.form-navigation .previous').click(function () {
-            navigateTo(curIndex() - 1);
-        });
-
-        // Next button goes forward iff current block validates
-        $('.form-navigation .next').click(function () {
-            $('#demo-form').parsley().whenValidate({
-                group: 'block-' + curIndex()
-            }).done(function () {
-                navigateTo(curIndex() + 1);
-            });
-        });
-
-        // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
-        $sections.each(function (index, section) {
-            $(section).find(':input').attr('data-parsley-group', 'block-' + index);
-        });
-        navigateTo(0); // Start at the beginning
-    });
-
-    function getRegNo() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{ route('brandRights.getRegNo') }}",
-            type: "post",
-            data: {
-                id: $('#company_name').val()
-            },
-            success: function (response) {
-                $('#company_reg_no').val(response);
-            }
-        });
-    }
-</script>
 @endsection

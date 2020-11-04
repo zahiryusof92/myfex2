@@ -43,6 +43,11 @@
                         <span> Permohonan <span class="badge badge-pill badge-danger">{{ App\Models\Application::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
                     <ul class="submenu {{ (request()->is('application*')) ? 'collapse in' : '' }}">
+                        <li class="{{ (request()->is('application/create')) ? 'active' : '' }}">
+                            <a href="{{ route('application.create') }}">Daftar Pemegang Francais</a>
+                        </li>
+                    </ul>
+                    <ul class="submenu {{ (request()->is('application*')) ? 'collapse in' : '' }}">
                         <li class="{{ (request()->is('application*')) ? 'active' : '' }}">
                             <a href="{{ route('application.index') }}">Senarai Permohonan</a>
                         </li>
@@ -136,7 +141,7 @@
                     </ul>
                 </li>
                 @endif
-                
+
                 @if (Auth::user()->isPengarah())
                 <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
@@ -161,7 +166,7 @@
                     </ul>
                 </li>
                 @endif
-                
+
                 @if (Auth::user()->isPendaftar())
                 <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">

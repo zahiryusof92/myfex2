@@ -5,5 +5,4 @@
 <!-- Sweet Alert -->
 <link href="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
 
-
 @yield('css')

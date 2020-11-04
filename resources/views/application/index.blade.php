@@ -28,43 +28,15 @@
     <div class="row">
         <div class="col-12">
             <div class="card m-b-20">
-                @if (Auth::user()->isUser())                
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-12">
-                            @if (App\Models\BrandRights::getApprovedOwnBrand())
-                            <a href="{{ route('application.create') }}" class="btn btn-primary w-md waves-effect waves-light m-r-5">
-                                Daftar Pemberi Francais <i class="mdi mdi-plus"></i>
-                            </a>
-                            @endif
-                            <a href="{{ route('application.create') }}" class="btn btn-secondary w-md waves-effect waves-light">
-                                Daftar Pemegang Francais <i class="mdi mdi-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                @elseif (Auth::user()->isConsultant())
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-12">
-                            <a href="{{ route('application.create') }}" class="btn btn-primary w-md waves-effect waves-light">
-                                Daftar Jenama <i class="mdi mdi-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                @endif
-
                 <div class="card-body">
 
                     <table id="application_datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
-                                <th>Jenama</th>
-                                <th>No. Pendaftaran Syarikat</th>
-                                <th>Nama Syarikat</th>
+                                <th>Jenis Francais</th>
                                 <th>Status</th>
-                                <th>Tarikh Permohonan</th>                                
+                                <th>Tarikh Permohonan</th>
+                                <th>Tarikh Kemaskini</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,13 +68,12 @@ $(document).ready(function () {
         serverSide: true,
         ajax: "{{ route('application.index') }}",
         columns: [
-            {data: 'brand_name', name: 'brand_name'},
-            {data: 'company_reg_no', name: 'company_reg_no'},
-            {data: 'company_name', name: 'company_name'},
+            {data: 'franchise_type', name: 'franchise_type'},
             {data: 'status', name: 'status'},
-            {data: 'created_at', name: 'created_at'}
+            {data: 'created_at', name: 'created_at'},
+            {data: 'updated_at', name: 'updated_at'}
         ],
-        order: [4, 'desc']
+        order: [2, 'desc']
     });
 });
 </script>
