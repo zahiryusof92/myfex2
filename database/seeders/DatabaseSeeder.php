@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder {
     public function run() {
         $this->call(CountrySeeder::class);
         $this->call(StateSeeder::class);
-        $this->call(PostcodeSeeder::class);
+//        $this->call(PostcodeSeeder::class);
         $this->call(TestSeeder::class);
     }
 

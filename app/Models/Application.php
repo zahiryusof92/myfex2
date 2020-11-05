@@ -75,7 +75,7 @@ class Application extends Model {
     }
 
     public function brandRight() {
-        return $this->belongsTo('App\Models\brandRights', 'brandright_id');
+        return $this->belongsTo('App\Models\BrandRights', 'brandright_id');
     }
 
     public function company() {
