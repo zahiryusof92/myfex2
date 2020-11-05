@@ -99,7 +99,7 @@ class ApplicationController extends Controller {
         $success = $application->save();
 
         if ($success) {
-            return redirect()->route('application.edit', $application->id);
+            return redirect()->route('application.companyInfo', $application->id);
         }
 
         return redirect()->back();
