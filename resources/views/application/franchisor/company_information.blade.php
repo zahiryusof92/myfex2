@@ -177,8 +177,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for=""><span class="text-danger">* </span>Jenama</label>
-                                            <input type="text" class="form-control" id="" name="" value="" autocomplete="" required>
+                                            <label for="">Jenama</label>
+                                            <input type="text" class="form-control" id="" name="" value="{{ $application->brandRight->brand->name }}" readonly>
                                         </div>
 
                                         <div class="form-group">                                            
