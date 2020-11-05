@@ -41,8 +41,10 @@ Route::middleware('auth')->group(function () {
         'application' => ApplicationController::class,
     ]);
 
-    Route::get('application/{id}/companyInfo', [ApplicationController::class, 'companyInfo'])->name('application.companyInfo');
+    Route::get('application/{id}/companyInformation', [ApplicationController::class, 'companyInformation'])->name('application.companyInformation');
     Route::get('application/{id}/capitalEquity', [ApplicationController::class, 'capitalEquity'])->name('application.capitalEquity');
+    Route::get('application/{id}/businessOperation', [ApplicationController::class, 'businessOperation'])->name('application.businessOperation');
+    Route::get('application/{id}/businessInformation', [ApplicationController::class, 'businessInformation'])->name('application.businessInformation');
 
     Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
 

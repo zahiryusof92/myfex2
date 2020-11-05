@@ -27,7 +27,7 @@
                                 @if ($brandRights->status == App\Models\BrandRights::DILULUS)
                                 <form method="POST" action="{{ route('application.store') }}">
                                     @csrf
-                                    <input type="hidden" name="brand_id" value="{{ $brandRights->brand->id }}"/>
+                                    <input type="hidden" name="brandright_id" value="{{ $brandRights->id }}"/>
                                     <input type="hidden" name="company_id" value="{{ $brandRights->company->id }}"/>
                                     <input type="hidden" name="franchise_type_id" value="{{ $brandRights->franchise_type_id }}"/>
                                     <button type="submit" class="btn btn-primary w-md waves-effect waves-light m-r-5">

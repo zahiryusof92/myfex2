@@ -41,7 +41,7 @@ class ApplicationController extends Controller {
             return DataTables::of($data)
                             ->addColumn('franchise_type', function ($row) {
                                 if ($row->status == Application::DRAF) {
-                                    return '<a href="' . route('application.companyInfo', $row->id) . '"><u>' . Helper::getFranchiseType($row->franchise_type_id) . '</u></a>';
+                                    return '<a href="' . route('application.companyInformation', $row->id) . '"><u>' . Helper::getFranchiseType($row->franchise_type_id) . '</u></a>';
                                 }
                                 return '<a href="' . route('application.show', $row->id) . '"><u>' . Helper::getFranchiseType($row->franchise_type_id) . '</u></a>';
                             })
@@ -51,7 +51,7 @@ class ApplicationController extends Controller {
                             ->editColumn('created_at', function($row) {
                                 $created_at = '<i>(not set)</i>';
                                 if ($row->created_at) {
-                                    $created_at = Helper::getFormattedDate($row->created_at, 'date');
+                                    $created_at = Helper::getFormattedDate($row->created_at);
                                 }
 
                                 return $created_at;
@@ -59,7 +59,7 @@ class ApplicationController extends Controller {
                             ->editColumn('updated_at', function($row) {
                                 $updated_at = '<i>(not set)</i>';
                                 if ($row->updated_at) {
-                                    $updated_at = Helper::getFormattedDate($row->updated_at, 'date');
+                                    $updated_at = Helper::getFormattedDate($row->updated_at);
                                 }
 
                                 return $updated_at;
@@ -90,7 +90,7 @@ class ApplicationController extends Controller {
     public function store(Request $request) {
 
         $application = new Application();
-        $application->brand_id = $request->brand_id;
+        $application->brandright_id = $request->brandright_id;
         $application->company_id = $request->company_id;
         if (Auth::user()->isConsultant()) {
             $application->consultant_id = Auth::user()->id;
@@ -99,7 +99,7 @@ class ApplicationController extends Controller {
         $success = $application->save();
 
         if ($success) {
-            return redirect()->route('application.companyInfo', $application->id);
+            return redirect()->route('application.companyInformation', $application->id);
         }
 
         return redirect()->back();
@@ -146,7 +146,7 @@ class ApplicationController extends Controller {
         //
     }
 
-    public function companyInfo($id) {
+    public function companyInformation($id) {
         $application = Application::findOrFail($id);
 
         if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
@@ -157,7 +157,7 @@ class ApplicationController extends Controller {
             $path = 'franchisee';
         }
 
-        return view('application.' . $path . '.company_info', compact('application'));
+        return view('application.' . $path . '.company_information', compact('application'));
     }
 
     public function capitalEquity($id) {
@@ -173,4 +173,33 @@ class ApplicationController extends Controller {
 
         return view('application.' . $path . '.capital_equity', compact('application'));
     }
+
+    public function businessOperation($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
+            $path = 'franchisor';
+        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'master_franchisee';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.business_operation', compact('application'));
+    }
+    
+    public function businessInformation($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
+            $path = 'franchisor';
+        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'master_franchisee';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.business_information', compact('application'));
+    }
+
 }
