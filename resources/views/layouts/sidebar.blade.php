@@ -7,48 +7,51 @@
             <!-- Left Menu Start -->
             <ul class="metismenu" id="side-menu">
                 <li class="menu-title">Main</li>
-                <li class="{{ (request()->is('home')) ? 'active' : '' }}">
-                    <a href="{{ url('home') }}" class="waves-effect">
+                <li>
+                    <a href="{{ url('home') }}" class="waves-effect {{ request()->routeIs('home') ? 'active' : '' }}">
                         <i class="mdi mdi-view-dashboard"></i><span> Laman Utama </span>
                     </a>
                 </li>
 
                 @if (Auth::user()->isUser())
-                <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('company*')) ? 'active' : '' }}">
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect {{ request()->routeIs('company*') ? 'active' : '' }}">
                         <i class="mdi mdi-factory"></i>
                         <span> Syarikat <span class="badge badge-pill badge-danger">{{ App\Models\Company::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
-                    <ul class="submenu {{ (request()->is('company*')) ? 'collapse in' : '' }}">
-                        <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('company*') ? 'collapse in' : '' }}">
+                        <li class="{{ request()->routeIs('company*') ? 'active' : '' }}">
                             <a href="{{ route('company.index') }}">Senarai Syarikat</a>
                         </li>
                     </ul>
                 </li>
                 @if (App\Models\Company::getApproved())
-                <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect {{ request()->routeIs('brandRights*') ? 'active' : '' }}">
                         <i class="mdi mdi-copyright"></i>
                         <span> Jenama <span class="badge badge-pill badge-danger">{{ App\Models\BrandRights::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
                     </a>
-                    <ul class="submenu {{ (request()->is('brandRights*')) ? 'collapse in' : '' }}">
-                        <li class="{{ (request()->is('brandRights*')) ? 'active' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('brandRights*') ? 'collapse in' : '' }}">
+                        <li class="{{ request()->routeIs('brandRights*') ? 'active' : '' }}">
                             <a href="{{ route('brandRights.index') }}">Senarai Jenama</a>
                         </li>
                     </ul>
                 </li>
-                <li class="{{ (request()->is('application*')) ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="waves-effect {{ (request()->is('application*')) ? 'active' : '' }}">
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect {{ request()->routeIs('application*') ? 'active' : '' }}">
                         <i class="mdi mdi-file-tree"></i>
                         <span> Permohonan <span class="badge badge-pill badge-danger">{{ App\Models\Application::getTotalPending() }}</span><span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
-                    </a>
-                    <ul class="submenu {{ (request()->is('application*')) ? 'collapse in' : '' }}">
-                        <li class="{{ (request()->is('application/create')) ? 'active' : '' }}">
-                            <a href="{{ route('application.create') }}">Daftar Pemegang Francais</a>
+                    </a>                   
+                    <ul class="submenu {{ request()->routeIs('application*') ? 'collapse in' : '' }}">
+                        @if (App\Models\BrandRights::showFranchisorButton())
+                        <li class="{{ request()->routeIs('application.franchise.create') ? 'active' : '' }}">
+                            <a href="{{ route('application.franchise.create') }}">Daftar Pemberi Francais</a>
                         </li>
-                    </ul>
-                    <ul class="submenu {{ (request()->is('application*')) ? 'collapse in' : '' }}">
-                        <li class="{{ (request()->is('application*')) ? 'active' : '' }}">
+                        @endif
+<!--                        <li class="{{ request()->routeIs('application.franchisee.create') ? 'active' : '' }}">
+                            <a href="{{ route('application.franchisee.create') }}">Daftar Pemegang Francais</a>
+                        </li>-->
+                        <li class="{{ request()->routeIs('application.index') ? 'active' : '' }}">
                             <a href="{{ route('application.index') }}">Senarai Permohonan</a>
                         </li>
                     </ul>

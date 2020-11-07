@@ -35,13 +35,13 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profil Syarikat</a>
+                            <a class="nav-link" href="{{ route('application.companyInformation', [$application->id]) }}" role="tab">Profil Syarikat</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#obligations" role="tab">Obligasi Perniagaan Francais</a>
+                            <a class="nav-link active" data-toggle="tab" href="#obligations" role="tab">Obligasi Perniagaan Francais</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#financial" role="tab">Maklumat Kewangan</a>
+                            <a class="nav-link" href="{{ route('application.financeReport', [$application->id]) }}" role="tab">Maklumat Kewangan</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#file" role="tab">Muat Naik Fail</a>
@@ -51,74 +51,33 @@
                         </li>
                     </ul>
 
-
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div class="tab-pane active p-3" id="profile" role="tabpanel">
+                        <div class="tab-pane active p-3" id="obligations" role="tabpanel">
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-pills nav-justified" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('application.companyInformation', [$application->id]) }}" role="tab">Maklumat Syarikat</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#franchisee_obligation" role="tab">Obligasi Francaisi</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('application.capitalEquity', [$application->id]) }}" role="tab">Modal dan Ekuiti</a>
+                                    <a class="nav-link" href="{{ route('application.franchisorObligation', [$application->id]) }}" role="tab">Obligasi Francaisor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#business_operation" role="tab">Operasi Perniagaan Syarikat</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('application.businessInformation', [$application->id]) }}" role="tab">Maklumat Perniagaan Francais</a>
+                                    <a class="nav-link" href="{{ route('application.rightsObligation', [$application->id]) }}" role="tab">Hak Dan Obligasi</a>
                                 </li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane active p-3" id="business_operation" role="tabpanel">
+                                <div class="tab-pane active p-3" id="franchisee_obligation" role="tabpanel">
                                     <form class="form-horizontal m-t-10" method="POST" action="" data-parsley-validate>
 
                                         <div class="row card">
-                                            <div class="card-header">
-                                                <h6>KEUNIKAN PERNIAGAAN</h6>
-                                            </div>
                                             <div class="card-body">
 
                                                 <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Keunikan Produk / Perkhidmatan Syarikat Anda</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Kriteria Pemilihan Jenis Lokasi Perniagaan Francais</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Keunikan Sistem Perniagaan Francais Yang Ditawarkan</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Brosur Perniagaan / Profil Syarikat</label>
-                                                    <input type="file" class="form-control-file" id="" name="" required>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Gambar Outlet Yang Akan Dijadikan Sebagai Prototaip</label>
-                                                    <input type="file" class="form-control-file" id="" name="" required>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row card">
-                                            <div class="card-header">
-                                                <h6>INFRASTRUKTUR / TEKNOLOGI YANG MEMBANTU OPERASI PERNIAGAAN</h6>
-                                            </div>
-                                            <div class="card-body">
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Point of Sale Atau Yang Seumpama</label>
+                                                    <label for=""><span class="text-danger">* </span>Adakah Francaisi Diwajibkan Untuk Membeli / Menyewa Benda Dan Peralatan / Perkhidmatan Daripada Francaisor Atau Sumber Yang Ditetapkan Oleh Francaisor?</label>
                                                     <br/>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radio1" id="" value="yes">
@@ -130,11 +89,43 @@
                                                     </div>
                                                     <br/>
                                                     <small class="text-danger">Jika ya, sila isikan maklumat</small>
-                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
+                                                    <br/>
+                                                    <button class="btn btn-success w-md waves-effect waves-light">Tambah Spesifikasi</button>
+
+                                                    <table class="table table-bordered table-hover m-t-10">
+                                                        <thead>
+                                                            <tr class="table-active">
+                                                                <th colspan="6">Spesifikasi Untuk Benda / Peralatan / Perkhidmatan</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Bil.</th>
+                                                                <th>Spesifikasi Untuk Benda / Peralatan / Perkhidmatan</th>
+                                                                <th>Method of Procument</th>
+                                                                <th>Sumber</th>
+                                                                <th>Nama Pembekal / Syarikat</th>
+                                                                <th>Tindakan</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                                
+
+                                                <div class="form-group">                                            
+                                                    <label for=""><span class="text-danger">* </span>Margin Pendapatan (%) Francaisor</label>
+                                                    <input type="text" class="form-control" id="" name="" value="" autocomplete="" required>
+                                                </div>
+
                                                 <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Perakaunan Berkomputer</label>
+                                                    <label for=""><span class="text-danger">* </span>Adakah Spesifikasi Untuk Peralatan Atau Perkhidmatan Untuk Perniagaan Francaisi Akan Ditetapkan Oleh Francaisor?</label>
                                                     <br/>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radio2" id="" value="yes">
@@ -145,12 +136,12 @@
                                                         <label class="form-check-label" for="">Tidak</label>
                                                     </div>
                                                     <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                    <small class="text-danger">Jika ya, sila nyatakan no. klausa yang berkaitan</small>
                                                     <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
-                                                
+
                                                 <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Keselamatan</label>
+                                                    <label for=""><span class="text-danger">* </span>Adakah Francaisi Dibenarkan Untuk Mengubahsuai Spesifikasi Francaisor?</label>
                                                     <br/>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radio3" id="" value="yes">
@@ -161,29 +152,28 @@
                                                         <label class="form-check-label" for="">Tidak</label>
                                                     </div>
                                                     <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                    <small class="text-danger">Jika ya, sila nyatakan no. klausa yang berkaitan</small>
                                                     <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Dapur Berpusat</label>
+                                                    <label for=""><span class="text-danger">* </span>Adakah Francaisi Diwajibkan Menumpukan Sepenuh Masa Kepada Perniagaan Francais?</label>
                                                     <br/>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radio4" id="" value="yes">
                                                         <label class="form-check-label" for="">Ya</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio4" id="" value="no">
+                                                        <input class="form-check-input" type="radio" name="radio4" id="" value="no" required>
                                                         <label class="form-check-label" for="">Tidak</label>
                                                     </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio4" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak Berkenaan</label>
-                                                    </div>                                            
+                                                    <br/>
+                                                    <small class="text-danger">Jika ya, sila nyatakan no. klausa yang berkaitan</small>
+                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
-                                                
+
                                                 <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Kemudahan Teknologi Lain</label>
+                                                    <label for=""><span class="text-danger">* </span>Adakah Francaisi Diwajibkan Untuk Memberi Jaminan Bertulis Bagi Merahsiakan Maklumat Francais?</label>
                                                     <br/>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radio5" id="" value="yes">
@@ -194,12 +184,12 @@
                                                         <label class="form-check-label" for="">Tidak</label>
                                                     </div>
                                                     <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                    <small class="text-danger">Jika ya, sila nyatakan no. klausa yang berkaitan</small>
                                                     <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
-                                                
+
                                                 <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Tambahan Inovasi Dan Kreativiti Kepada Perniagaan</label>
+                                                    <label for=""><span class="text-danger">* </span>Adakah Francaisi Dilarang Untuk Menjalankan Perniagaan Yang Serupa?</label>
                                                     <br/>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radio6" id="" value="yes">
@@ -210,34 +200,26 @@
                                                         <label class="form-check-label" for="">Tidak</label>
                                                     </div>
                                                     <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                    <small class="text-danger">Jika ya, sila nyatakan no. klausa yang berkaitan</small>
                                                     <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
-                                                
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row card">
-                                            <div class="card-header">
-                                                <h6>STRATEGI PEMASARAN</h6>
-                                            </div>
-                                            <div class="card-body">
-                                                
+
                                                 <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Pelan Pemasaran Bagi Mempromosikan Sistem Perniagaan Francais Anda</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    <label for=""><span class="text-danger">* </span>Adakah Francaisi Dilarang Menjual Barangan Dan Perkhidmatan Selain Daripada Yang Difrancaiskan?</label>
+                                                    <br/>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="radio7" id="" value="yes">
+                                                        <label class="form-check-label" for="">Ya</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="radio7" id="" value="no" required>
+                                                        <label class="form-check-label" for="">Tidak</label>
+                                                    </div>
+                                                    <br/>
+                                                    <small class="text-danger">Jika ya, sila nyatakan no. klausa yang berkaitan</small>
+                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
-                                                
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Pelan Pemasaran Bagi Mempromosikan Produk / Perkhidmatan</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
-                                                </div>
-                                                
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Jumlah Dana Yang Akan Diperuntukkan Bagi Tujuan Promosi Oleh Francaisor (RM)</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
-                                                </div>
-                                                                                                
+
                                             </div>
                                         </div>
 
@@ -284,6 +266,8 @@
                     type: 'success',
                     showCancelButton: false,
                     confirmButtonColor: "#58db83"
+                }).then(function () {
+                    window.location.href = "{{ route('application.capitalEquity', [$application->id]) }}";
                 });
             }
         });

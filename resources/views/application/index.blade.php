@@ -33,6 +33,7 @@
                     <table id="application_datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
+                                <th>Jenama</th>
                                 <th>Jenis Francais</th>
                                 <th>Status</th>
                                 <th>Tarikh Permohonan</th>
@@ -68,12 +69,13 @@ $(document).ready(function () {
         serverSide: true,
         ajax: "{{ route('application.index') }}",
         columns: [
+            {data: 'brand', name: 'brand'},
             {data: 'franchise_type', name: 'franchise_type'},
             {data: 'status', name: 'status'},
             {data: 'created_at', name: 'created_at'},
             {data: 'updated_at', name: 'updated_at'}
         ],
-        order: [2, 'desc']
+        order: [3, 'desc']
     });
 });
 </script>
