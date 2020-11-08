@@ -48,9 +48,9 @@
                             <a href="{{ route('application.franchise.create') }}">Daftar Pemberi Francais</a>
                         </li>
                         @endif
-<!--                        <li class="{{ request()->routeIs('application.franchisee.create') ? 'active' : '' }}">
+                        <li class="{{ request()->routeIs('application.franchisee.create') ? 'active' : '' }}">
                             <a href="{{ route('application.franchisee.create') }}">Daftar Pemegang Francais</a>
-                        </li>-->
+                        </li>
                         <li class="{{ request()->routeIs('application.index') ? 'active' : '' }}">
                             <a href="{{ route('application.index') }}">Senarai Permohonan</a>
                         </li>

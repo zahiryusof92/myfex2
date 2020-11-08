@@ -38,6 +38,7 @@
                                 <th>Status</th>
                                 <th>Tarikh Permohonan</th>
                                 <th>Tarikh Kemaskini</th>
+                                <th>Tindakan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,7 +74,8 @@ $(document).ready(function () {
             {data: 'franchise_type', name: 'franchise_type'},
             {data: 'status', name: 'status'},
             {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'}
+            {data: 'updated_at', name: 'updated_at'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         order: [3, 'desc']
     });

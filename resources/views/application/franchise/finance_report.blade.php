@@ -41,13 +41,13 @@
                             <a class="nav-link" href="{{ route('application.franchiseeObligation', [$application->id]) }}" role="tab">Obligasi Perniagaan Francais</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#financial" role="tab">Maklumat Kewangan</a>
+                            <a class="nav-link active" data-toggle="tab" href="#financial" role="tab">Maklumat Kewangan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#file" role="tab">Muat Naik Fail</a>
+                            <a class="nav-link" href="{{ route('application.filesUpload', [$application->id]) }}" role="tab">Muat Naik Fail</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#declaration" role="tab">Deklarasi</a>
+                            <a class="nav-link" href="{{ route('application.declaration', [$application->id]) }}" role="tab">Deklarasi</a>
                         </li>
                     </ul>
 
@@ -75,7 +75,7 @@
 
                                                 <div class="form-group">
                                                     <label for=""><span class="text-danger">* </span>Mata Wang</label>
-                                                    <select class="form-control" id="" name="" required>
+                                                    <select class="form-control select2" id="" name="" required>
                                                         <option value=""> - Sila Pilih - </option>
                                                         <option value="AED100">AED100</option>
                                                         <option value="AUD">AUD</option>

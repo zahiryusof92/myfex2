@@ -45,6 +45,7 @@
                                 {{ Form::select('brand_name', $approvedBrandList, false, array('id' => 'brand_name' , 'class' => 'form-control select2', 'onchange' => 'getFranchiseType()', 'required')) }}
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="company_reg_no">Jenis Francais</label>
@@ -55,6 +56,7 @@
                                 </select>
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="company_name">Nama Syarikat</label>
@@ -63,6 +65,7 @@
                                 <input type="text" class="form-control" id="company_name" name="company_name" value="{{ Auth::user()->company->name }}" autocomplete="company_name" readonly>
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="company_reg_no">No. Pendaftaran Syarikat</label>

@@ -41,13 +41,13 @@
                             <a class="nav-link" href="{{ route('application.franchiseeObligation', [$application->id]) }}" role="tab">Obligasi Perniagaan Francais</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#financial" role="tab">Maklumat Kewangan</a>
+                            <a class="nav-link active" data-toggle="tab" href="#financial" role="tab">Maklumat Kewangan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#file" role="tab">Muat Naik Fail</a>
+                            <a class="nav-link" href="{{ route('application.filesUpload', [$application->id]) }}" role="tab">Muat Naik Fail</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#declaration" role="tab">Deklarasi</a>
+                            <a class="nav-link" href="{{ route('application.declaration', [$application->id]) }}" role="tab">Deklarasi</a>
                         </li>
                     </ul>
 
@@ -74,7 +74,143 @@
                                             <div class="card-body">
 
                                                 <div class="form-group">
-                                                    
+                                                    <button class="btn btn-success w-md waves-effect waves-light">Tambah Maklumat Pakej</button>
+                                                    <table class="table table-bordered table-hover m-t-10">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 30%;">Perkara</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Fi Francais</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Kos Pengubahsuaian</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Perabot Lekapan Dan Kelengkapan</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Peralatan Pejabat</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sistem POS</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Stok Permulaan</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Kos Penubuhan Syarikat</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Modal Kerja (Gaji, Sewa Dan Utiliti Untuk Tempoh 3 Bulan)</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Deposit Sewa Dan Utiliti</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <th>Jumlah</th>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Tindakan</th>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <button class="btn btn-success w-md waves-effect waves-light">Tambah Maklumat Pakej</button>
+                                                    <br/>
+                                                    <small class="text-danger">Sila isikan justifikasi dan maklumat terperinci bagi fi yang dikenakan oleh syarikat.</small>
+                                                    <table class="table table-bordered table-hover m-t-10">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Maklumat Fi</th>
+                                                                <th>Tujuan Fi Dikenakan</th>
+                                                                <th>Justifikasi</th>
+                                                                <th>Bila Bayaran Perlu Dibuat	</th>
+                                                                <th>Nyatakan Klausa Berkaitan</th>
+                                                                <th>Sama Ada Fi Boleh Dikembalikan</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    Fi Francais<br/>
+                                                                    <a href="#">Kemaskini</a><br/>
+                                                                    <a href="#">Padam</a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>Tidak</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Fi Pengiklanan<br/>
+                                                                    <a href="#">Kemaskini</a><br/>
+                                                                    <a href="#">Padam</a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>Tidak</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Royalti<br/>
+                                                                    <a href="#">Kemaskini</a><br/>
+                                                                    <a href="#">Padam</a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>Tidak</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Latihan Fi<br/>
+                                                                    <a href="#">Kemaskini</a><br/>
+                                                                    <a href="#">Padam</a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>Tidak</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Fi Perkhidmatan<br/>
+                                                                    <a href="#">Kemaskini</a><br/>
+                                                                    <a href="#">Padam</a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>Tidak</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>                                                    
                                                 </div>
 
                                             </div>

@@ -67,7 +67,15 @@ class ApplicationController extends Controller {
 
                                 return $updated_at;
                             })
-                            ->rawColumns(['brand', 'franchise_type', 'status', 'created_at', 'updated_at'])
+                            ->addColumn('action', function($row) {
+                                $button = '';
+                                if ($row->status == Application::DILULUS) {
+                                    $button .= '<a href="' . route('application.companyInformation', $row->id) . '" class="btn btn-sm btn-info waves-effect waves-light">Pindaan Matan</a>';
+                                }
+
+                                return $button;
+                            })
+                            ->rawColumns(['brand', 'franchise_type', 'status', 'created_at', 'updated_at', 'action'])
                             ->make(true);
         }
 
@@ -113,7 +121,14 @@ class ApplicationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application) {
-        //
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.show', compact('application'));
     }
 
     /**
@@ -148,13 +163,15 @@ class ApplicationController extends Controller {
     }
 
     public function franchise() {
-        $approvedBrandList = Helper::approvedBrandList();
+        $approvedBrandList = Helper::approvedOwnBrandList();
 
         return view('application.franchise.create', compact('approvedBrandList'));
     }
 
     public function franchisee() {
-        return view('application.franchisee.create');
+        $approvedBrandList = Helper::approvedBrandList();
+
+        return view('application.franchisee.create', compact('approvedBrandList'));
     }
 
     public function getFranchiseType(Request $request) {
@@ -266,7 +283,7 @@ class ApplicationController extends Controller {
 
         return view('application.' . $path . '.rights_obligation', compact('application'));
     }
-    
+
     public function financeReport($id) {
         $application = Application::findOrFail($id);
 
@@ -278,7 +295,7 @@ class ApplicationController extends Controller {
 
         return view('application.' . $path . '.finance_report', compact('application'));
     }
-    
+
     public function startingCost($id) {
         $application = Application::findOrFail($id);
 
@@ -289,6 +306,42 @@ class ApplicationController extends Controller {
         }
 
         return view('application.' . $path . '.starting_cost', compact('application'));
+    }
+
+    public function filesUpload($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.files_upload', compact('application'));
+    }
+
+    public function declaration($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.declaration', compact('application'));
+    }
+
+    public function franchiseeInformation($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.franchisee_information', compact('application'));
     }
 
 }

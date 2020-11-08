@@ -24,7 +24,10 @@
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
                         <a class="dropdown-item" href="{{ route('profile.index') }}">
-                            <i class="mdi mdi-account-circle m-r-5"></i> Profile Saya
+                            <i class="mdi mdi-account-circle m-r-5"></i> Profil Saya
+                        </a>
+                        <a class="dropdown-item" href="{{ route('profile.edit', Auth::user()->id) }}">
+                            <i class="mdi mdi-pencil m-r-5"></i> Kemaskini
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

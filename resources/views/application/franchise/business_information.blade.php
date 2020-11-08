@@ -35,7 +35,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profil Syarikat</a>
+                            <a class="nav-link active" data-toggle="tab" href="#company_information" role="tab">Profil Syarikat</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('application.franchiseeObligation', [$application->id]) }}" role="tab">Obligasi Perniagaan Francais</a>
@@ -44,17 +44,17 @@
                             <a class="nav-link" href="{{ route('application.financeReport', [$application->id]) }}" role="tab">Maklumat Kewangan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#file" role="tab">Muat Naik Fail</a>
+                            <a class="nav-link" href="{{ route('application.filesUpload', [$application->id]) }}" role="tab">Muat Naik Fail</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#declaration" role="tab">Deklarasi</a>
+                            <a class="nav-link" href="{{ route('application.declaration', [$application->id]) }}" role="tab">Deklarasi</a>
                         </li>
                     </ul>
 
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div class="tab-pane active p-3" id="profile" role="tabpanel">
+                        <div class="tab-pane active p-3" id="company_information" role="tabpanel">
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-pills nav-justified" role="tablist">
@@ -79,173 +79,192 @@
 
                                         <div class="row card">
                                             <div class="card-body">
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Tempoh Perniagaan Telah Beroperasi Sebelum Dikemukakan Untuk Permohonan Francais</label>
-                                                    <input type="text" class="form-control" id="" name="" value="" autocomplete="">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sektor Perniagaan Yang Ingin Difrancaiskan</label>
-                                                    <select class="form-control" id="" name="" required>
-                                                        <option value=""> - Sila Pilih - </option>
-                                                        <optgroup label="Makanan dan Minuman">
-                                                            <option value="sektor-1-a">Restoran</option>
-                                                            <option value="sektor-1-b">Kopitiam</option>
-                                                            <option value="sektor-1-c">Medan Selera</option>
-                                                            <option value="sektor-1-d">Outlet Makanan Segera</option>
-                                                            <option value="sektor-1-e">Kiosk Makanan dan Minuman</option>
-                                                            <option value="sektor-1-f">Bistro / Pub</option>
-                                                            <option value="sektor-1-g">Bakeri</option>
-                                                        </optgroup>
-                                                        <optgroup label="Pakaian dan Aksesori">
-                                                            <option value="sektor-2-a">Butik</option>
-                                                            <option value="sektor-2-b">Tekstil</option>
-                                                            <option value="sektor-2-c">Fabrik Hiasan Dalaman</option>
-                                                            <option value="sektor-2-d">Aksesori</option>
-                                                            <option value="sektor-2-e">Barangan Kemas</option>
-                                                        </optgroup>
-                                                        <optgroup label="usat Kesihatan dan Rawatan Kecantikan">
-                                                            <option value="must|sektor-8-a">Spa</option>
-                                                            <option value="must|sektor-8-b">Rawatan Kecantikan</option>
-                                                            <option value="must|sektor-8-c">Kosmetik</option>
-                                                            <option value="must|sektor-8-d">Gimnasium</option>
-                                                            <option value="must|sektor-8-e">Pusat Urut dan Refleksologi</option>
-                                                            <option value="must|sektor-8-f">Farmasi</option>
-                                                            <option value="must|sektor-8-g">Pusat Dialisis</option>
-                                                            <option value="must|sektor-8-h">Klinik / Hospital</option>
-                                                            <option value="must|sektor-8-i">Pusat Rawatan Kesihatan</option>
-                                                            <option value="must|sektor-8-j">Pertanian</option>
-                                                            <option value="must|sektor-8-k">Perikanan</option>
-                                                            <option value="must|sektor-8-l">Perkhidmatan Veterinar</option>
-                                                            <option value="must|sektor-8-m">Optometri</option>
-                                                        </optgroup>
-                                                        <optgroup label="IT, Telekomunikasi dan Elektrik">
-                                                            <option value="sektor-6-a">IT</option>
-                                                            <option value="sektor-6-b">Cyber Cafe</option>
-                                                            <option value="sektor-6-c">Gadget</option>
-                                                            <option value="sektor-6-d">Elektrik dan Elektronik</option>
-                                                        </optgroup>
-                                                        <optgroup label="Kedai Serbaneka dan Pasaraya">
-                                                            <option value="sektor-7-a">Peruncitan dan Kedai Serbaneka</option>
-                                                            <option value="sektor-7-b">Pasaraya</option>
-                                                            <option value="sektor-7-c">Produk dan Perkhidmatan Hijau</option>
-                                                        </optgroup>
-                                                        <optgroup label="Pendidikan dan Pusat Pembelajaran">
-                                                            <option value="sektor-11-a">Pusat Pengembangan Minda dan Kreativiti</option>
-                                                            <option value="must|sektor-11-b">Pusat Bahasa</option>
-                                                            <option value="must|sektor-11-c">Pusat Tuisyen</option>
-                                                            <option value="must|sektor-11-d">Kolej dan Universiti</option>
-                                                            <option value="must|sektor-11-e">Sekolah</option>
-                                                            <option value="must|sektor-11-f">Kemahiran Khusus [komputer, muzik, tarian, seni mempertahankan diri)</option>
-                                                            <option value="must|sektor-11-g">Pusat Asuhan Kanak-kanak / Taska / Tadika</option>
-                                                        </optgroup>
-                                                        <optgroup label="Perkhidmatan dan Penyelenggaraan">
-                                                            <option value="sektor-3-a">Pusat Servis</option>
-                                                            <option value="sektor-3-b">Penyelenggaraan</option>
-                                                        </optgroup>
-                                                        <optgroup label="Kewangan">
-                                                            <option value="sektor-4-a">Insurans</option>
-                                                            <option value="sektor-4-b">Pengurup Wang Asing Berlesen</option>
-                                                            <option value="sektor-4-c">Pajak Gadai / Ar-Rahnu</option>
-                                                            <option value="sektor-4-d">Syarikat Kewangan Berlesen</option>
-                                                        </optgroup>
-                                                        <optgroup label="Pengangkutan">
-                                                            <option value="must|sektor-5-a">Pengangkutan Darat</option>
-                                                            <option value="must|sektor-5-b">Pengangkutan Air</option>
-                                                            <option value="must|sektor-5-c">Pengangkutan Udara</option>
-                                                        </optgroup>
-                                                        <optgroup label="Perkhidmatan Profesional">
-                                                            <option value="sektor-10-a">Perunding</option>
-                                                            <option value="sektor-10-b">Khidmat Guaman</option>
-                                                            <option value="sektor-10-c">Khidmat Perakaunan dan Pengauditan</option>
-                                                            <option value="sektor-10-d">Khidmat Kesetiausahaan Syarikat</option>
-                                                        </optgroup>
-                                                        <optgroup label="Perkhidmatan Masyarakat, Sosial dan Peribadi">
-                                                            <option value="must|sektor-14-a">Taman Rekreasi</option>
-                                                            <option value="must|sektor-14-b">Pusat Jagaan [orang tua, anak yatim, down syndrome, haiwan)</option>
-                                                            <option value="must|sektor-14-c">Galeri Pameran</option>
-                                                        </optgroup>
-                                                        <optgroup label="Pembinaan, Pengubahsuaian dan Rekaan Dalaman">
-                                                            <option value="sektor-15-a">Pertukangan</option>
-                                                            <option value="sektor-15-b">Khidmat Pengubahsuaian</option>
-                                                            <option value="sektor-15-c">Khidmat Rekaan Dalaman</option>
-                                                        </optgroup>
-                                                        <optgroup label="Penginapan dan Pelancongan">
-                                                            <option value="sektor-16-a">Hotel</option>
-                                                            <option value="sektor-16-b">Guesthouse</option>
-                                                            <option value="sektor-16-c">Homestay</option>
-                                                            <option value="sektor-16-d">Agro Pelancongan</option>
-                                                            <option value="sektor-16-e">Pelancongan Perubatan</option>
-                                                            <option value="sektor-16-f">Motel</option>
-                                                            <option value="sektor-16-g">Resort</option>
-                                                        </optgroup>
-                                                        <optgroup label="Lain-lain Perniagaan">
-                                                            <option value="sektor-17-a">Lain-lain Perniagaan</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sijil Pendaftaran Dengan Agensi Berkaitan</label>
-                                                    <select class="form-control" id="" name="" required>
-                                                        <option value=""> - Sila Pilih - </option>
-                                                        <option value="agensi-3">Badan Pertauliahan yang Berkaitan</option>
-                                                        <option value="agensi-4">Ministry of Education</option>
-                                                        <option value="agensi-2">Ministry of Health</option>
-                                                        <option value="agensi-5">Ministry of Higher Education</option>
-                                                        <option value="agensi-x">Not Applicable</option>
-                                                        <option value="agensi-99">Other Agencies</option>
-                                                        <option value="agensi-6">Social Welfare Department</option>
-                                                        <option value="agensi-1">Suruhanjaya Pengangkutan Awam Darat [SPAD)</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Jenis Perniagaan Yang Ingin Difrancaiskan</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Konsep Perniagaan</label>
-                                                    <br/>
-                                                    <button class="btn btn-success w-md waves-effect waves-light">Tambah Konsep Perniagaan</button>
-
-                                                    <table class="table table-bordered table-hover m-t-10">
-                                                        <thead>
-                                                            <tr class="table-active">
-                                                                <th colspan="4">Konsep Perniagaan Yang Ingin Difrancaiskan</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Bil.</th>
-                                                                <th>Nama Pakej</th>
-                                                                <th>Kategori Perniagaan</th>
-                                                                <th>Tindakan</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Adakah Perniagaan Francais Akan Diuruskan Oleh Syarikat Pengurusan / Subsidiari / Seumpamanya?</label>
-                                                    <br/>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio1" id="" value="yes">
-                                                        <label class="form-check-label" for="">Ya</label>
+                                                @php $count = 0; @endphp
+                                                
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Tempoh Perniagaan Telah Beroperasi Sebelum Dikemukakan Untuk Permohonan Francais</label>
+                                                        <input type="text" class="form-control" id="" name="" value="" autocomplete="">
                                                     </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio1" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak</label>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Sektor Perniagaan Yang Ingin Difrancaiskan</label>
+                                                        <select class="form-control select2" id="" name="" required>
+                                                            <option value=""> - Sila Pilih - </option>
+                                                            <optgroup label="Makanan dan Minuman">
+                                                                <option value="sektor-1-a">Restoran</option>
+                                                                <option value="sektor-1-b">Kopitiam</option>
+                                                                <option value="sektor-1-c">Medan Selera</option>
+                                                                <option value="sektor-1-d">Outlet Makanan Segera</option>
+                                                                <option value="sektor-1-e">Kiosk Makanan dan Minuman</option>
+                                                                <option value="sektor-1-f">Bistro / Pub</option>
+                                                                <option value="sektor-1-g">Bakeri</option>
+                                                            </optgroup>
+                                                            <optgroup label="Pakaian dan Aksesori">
+                                                                <option value="sektor-2-a">Butik</option>
+                                                                <option value="sektor-2-b">Tekstil</option>
+                                                                <option value="sektor-2-c">Fabrik Hiasan Dalaman</option>
+                                                                <option value="sektor-2-d">Aksesori</option>
+                                                                <option value="sektor-2-e">Barangan Kemas</option>
+                                                            </optgroup>
+                                                            <optgroup label="usat Kesihatan dan Rawatan Kecantikan">
+                                                                <option value="must|sektor-8-a">Spa</option>
+                                                                <option value="must|sektor-8-b">Rawatan Kecantikan</option>
+                                                                <option value="must|sektor-8-c">Kosmetik</option>
+                                                                <option value="must|sektor-8-d">Gimnasium</option>
+                                                                <option value="must|sektor-8-e">Pusat Urut dan Refleksologi</option>
+                                                                <option value="must|sektor-8-f">Farmasi</option>
+                                                                <option value="must|sektor-8-g">Pusat Dialisis</option>
+                                                                <option value="must|sektor-8-h">Klinik / Hospital</option>
+                                                                <option value="must|sektor-8-i">Pusat Rawatan Kesihatan</option>
+                                                                <option value="must|sektor-8-j">Pertanian</option>
+                                                                <option value="must|sektor-8-k">Perikanan</option>
+                                                                <option value="must|sektor-8-l">Perkhidmatan Veterinar</option>
+                                                                <option value="must|sektor-8-m">Optometri</option>
+                                                            </optgroup>
+                                                            <optgroup label="IT, Telekomunikasi dan Elektrik">
+                                                                <option value="sektor-6-a">IT</option>
+                                                                <option value="sektor-6-b">Cyber Cafe</option>
+                                                                <option value="sektor-6-c">Gadget</option>
+                                                                <option value="sektor-6-d">Elektrik dan Elektronik</option>
+                                                            </optgroup>
+                                                            <optgroup label="Kedai Serbaneka dan Pasaraya">
+                                                                <option value="sektor-7-a">Peruncitan dan Kedai Serbaneka</option>
+                                                                <option value="sektor-7-b">Pasaraya</option>
+                                                                <option value="sektor-7-c">Produk dan Perkhidmatan Hijau</option>
+                                                            </optgroup>
+                                                            <optgroup label="Pendidikan dan Pusat Pembelajaran">
+                                                                <option value="sektor-11-a">Pusat Pengembangan Minda dan Kreativiti</option>
+                                                                <option value="must|sektor-11-b">Pusat Bahasa</option>
+                                                                <option value="must|sektor-11-c">Pusat Tuisyen</option>
+                                                                <option value="must|sektor-11-d">Kolej dan Universiti</option>
+                                                                <option value="must|sektor-11-e">Sekolah</option>
+                                                                <option value="must|sektor-11-f">Kemahiran Khusus [komputer, muzik, tarian, seni mempertahankan diri)</option>
+                                                                <option value="must|sektor-11-g">Pusat Asuhan Kanak-kanak / Taska / Tadika</option>
+                                                            </optgroup>
+                                                            <optgroup label="Perkhidmatan dan Penyelenggaraan">
+                                                                <option value="sektor-3-a">Pusat Servis</option>
+                                                                <option value="sektor-3-b">Penyelenggaraan</option>
+                                                            </optgroup>
+                                                            <optgroup label="Kewangan">
+                                                                <option value="sektor-4-a">Insurans</option>
+                                                                <option value="sektor-4-b">Pengurup Wang Asing Berlesen</option>
+                                                                <option value="sektor-4-c">Pajak Gadai / Ar-Rahnu</option>
+                                                                <option value="sektor-4-d">Syarikat Kewangan Berlesen</option>
+                                                            </optgroup>
+                                                            <optgroup label="Pengangkutan">
+                                                                <option value="must|sektor-5-a">Pengangkutan Darat</option>
+                                                                <option value="must|sektor-5-b">Pengangkutan Air</option>
+                                                                <option value="must|sektor-5-c">Pengangkutan Udara</option>
+                                                            </optgroup>
+                                                            <optgroup label="Perkhidmatan Profesional">
+                                                                <option value="sektor-10-a">Perunding</option>
+                                                                <option value="sektor-10-b">Khidmat Guaman</option>
+                                                                <option value="sektor-10-c">Khidmat Perakaunan dan Pengauditan</option>
+                                                                <option value="sektor-10-d">Khidmat Kesetiausahaan Syarikat</option>
+                                                            </optgroup>
+                                                            <optgroup label="Perkhidmatan Masyarakat, Sosial dan Peribadi">
+                                                                <option value="must|sektor-14-a">Taman Rekreasi</option>
+                                                                <option value="must|sektor-14-b">Pusat Jagaan [orang tua, anak yatim, down syndrome, haiwan)</option>
+                                                                <option value="must|sektor-14-c">Galeri Pameran</option>
+                                                            </optgroup>
+                                                            <optgroup label="Pembinaan, Pengubahsuaian dan Rekaan Dalaman">
+                                                                <option value="sektor-15-a">Pertukangan</option>
+                                                                <option value="sektor-15-b">Khidmat Pengubahsuaian</option>
+                                                                <option value="sektor-15-c">Khidmat Rekaan Dalaman</option>
+                                                            </optgroup>
+                                                            <optgroup label="Penginapan dan Pelancongan">
+                                                                <option value="sektor-16-a">Hotel</option>
+                                                                <option value="sektor-16-b">Guesthouse</option>
+                                                                <option value="sektor-16-c">Homestay</option>
+                                                                <option value="sektor-16-d">Agro Pelancongan</option>
+                                                                <option value="sektor-16-e">Pelancongan Perubatan</option>
+                                                                <option value="sektor-16-f">Motel</option>
+                                                                <option value="sektor-16-g">Resort</option>
+                                                            </optgroup>
+                                                            <optgroup label="Lain-lain Perniagaan">
+                                                                <option value="sektor-17-a">Lain-lain Perniagaan</option>
+                                                            </optgroup>
+                                                        </select>
                                                     </div>
-                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Sijil Pendaftaran Dengan Agensi Berkaitan</label>
+                                                        <select class="form-control select2" id="" name="" required>
+                                                            <option value=""> - Sila Pilih - </option>
+                                                            <option value="agensi-3">Badan Pertauliahan yang Berkaitan</option>
+                                                            <option value="agensi-4">Ministry of Education</option>
+                                                            <option value="agensi-2">Ministry of Health</option>
+                                                            <option value="agensi-5">Ministry of Higher Education</option>
+                                                            <option value="agensi-x">Not Applicable</option>
+                                                            <option value="agensi-99">Other Agencies</option>
+                                                            <option value="agensi-6">Social Welfare Department</option>
+                                                            <option value="agensi-1">Suruhanjaya Pengangkutan Awam Darat [SPAD)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Jenis Perniagaan Yang Ingin Difrancaiskan</label>
+                                                        <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Konsep Perniagaan</label>
+                                                        <br/>
+                                                        <button class="btn btn-success w-md waves-effect waves-light">Tambah Konsep Perniagaan</button>
+
+                                                        <table class="table table-bordered table-hover m-t-10">
+                                                            <thead>
+                                                                <tr class="table-active">
+                                                                    <th colspan="4">Konsep Perniagaan Yang Ingin Difrancaiskan</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Bil.</th>
+                                                                    <th>Nama Pakej</th>
+                                                                    <th>Kategori Perniagaan</th>
+                                                                    <th>Tindakan</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Adakah Perniagaan Francais Akan Diuruskan Oleh Syarikat Pengurusan / Subsidiari / Seumpamanya?</label>
+                                                        <br/>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio1" id="" value="yes">
+                                                            <label class="form-check-label" for="">Ya</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio1" id="" value="no" required>
+                                                            <label class="form-check-label" for="">Tidak</label>
+                                                        </div>
+                                                        <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
+                                                    </div>
                                                 </div>
 
                                             </div>

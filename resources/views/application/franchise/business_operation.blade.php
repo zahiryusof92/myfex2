@@ -35,7 +35,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profil Syarikat</a>
+                            <a class="nav-link active" data-toggle="tab" href="#company_information" role="tab">Profil Syarikat</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('application.franchiseeObligation', [$application->id]) }}" role="tab">Obligasi Perniagaan Francais</a>
@@ -44,17 +44,17 @@
                             <a class="nav-link" href="{{ route('application.financeReport', [$application->id]) }}" role="tab">Maklumat Kewangan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#file" role="tab">Muat Naik Fail</a>
+                            <a class="nav-link" href="{{ route('application.filesUpload', [$application->id]) }}" role="tab">Muat Naik Fail</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#declaration" role="tab">Deklarasi</a>
+                            <a class="nav-link" href="{{ route('application.declaration', [$application->id]) }}" role="tab">Deklarasi</a>
                         </li>
                     </ul>
 
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div class="tab-pane active p-3" id="profile" role="tabpanel">
+                        <div class="tab-pane active p-3" id="company_information" role="tabpanel">
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-pills nav-justified" role="tablist">
@@ -77,35 +77,51 @@
                                 <div class="tab-pane active p-3" id="business_operation" role="tabpanel">
                                     <form class="form-horizontal m-t-10" method="POST" action="" data-parsley-validate>
 
-                                        <div class="row card">
+                                        <div class="row card">                                            
                                             <div class="card-header">
                                                 <h6>KEUNIKAN PERNIAGAAN</h6>
                                             </div>
                                             <div class="card-body">
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Keunikan Produk / Perkhidmatan Syarikat Anda</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                @php $count = 0; @endphp
+                                                
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Keunikan Produk / Perkhidmatan Syarikat Anda</label>
+                                                        <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Kriteria Pemilihan Jenis Lokasi Perniagaan Francais</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Kriteria Pemilihan Jenis Lokasi Perniagaan Francais</label>
+                                                        <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Keunikan Sistem Perniagaan Francais Yang Ditawarkan</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Keunikan Sistem Perniagaan Francais Yang Ditawarkan</label>
+                                                        <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Brosur Perniagaan / Profil Syarikat</label>
-                                                    <input type="file" class="form-control-file" id="" name="" required>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Brosur Perniagaan / Profil Syarikat</label>
+                                                        <input type="file" class="form-control-file" id="" name="" required>
+                                                    </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Gambar Outlet Yang Akan Dijadikan Sebagai Prototaip</label>
-                                                    <input type="file" class="form-control-file" id="" name="" required>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Gambar Outlet Yang Akan Dijadikan Sebagai Prototaip</label>
+                                                        <input type="file" class="form-control-file" id="" name="" required>
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -116,128 +132,157 @@
                                                 <h6>INFRASTRUKTUR / TEKNOLOGI YANG MEMBANTU OPERASI PERNIAGAAN</h6>
                                             </div>
                                             <div class="card-body">
-
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Point of Sale Atau Yang Seumpama</label>
-                                                    <br/>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio1" id="" value="yes">
-                                                        <label class="form-check-label" for="">Ya</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio1" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak</label>
-                                                    </div>
-                                                    <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
-                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
-                                                </div>
+                                                @php $count = 0; @endphp
                                                 
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Perakaunan Berkomputer</label>
-                                                    <br/>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio2" id="" value="yes">
-                                                        <label class="form-check-label" for="">Ya</label>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Sistem Point of Sale Atau Yang Seumpama</label>
+                                                        <br/>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio1" id="" value="yes">
+                                                            <label class="form-check-label" for="">Ya</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio1" id="" value="no" required>
+                                                            <label class="form-check-label" for="">Tidak</label>
+                                                        </div>
+                                                        <br/>
+                                                        <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                        <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                     </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio2" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak</label>
-                                                    </div>
-                                                    <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
-                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
-                                                </div>
-                                                
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Keselamatan</label>
-                                                    <br/>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio3" id="" value="yes">
-                                                        <label class="form-check-label" for="">Ya</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio3" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak</label>
-                                                    </div>
-                                                    <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
-                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Sistem Dapur Berpusat</label>
-                                                    <br/>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio4" id="" value="yes">
-                                                        <label class="form-check-label" for="">Ya</label>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Sistem Perakaunan Berkomputer</label>
+                                                        <br/>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio2" id="" value="yes">
+                                                            <label class="form-check-label" for="">Ya</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio2" id="" value="no" required>
+                                                            <label class="form-check-label" for="">Tidak</label>
+                                                        </div>
+                                                        <br/>
+                                                        <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                        <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                     </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio4" id="" value="no">
-                                                        <label class="form-check-label" for="">Tidak</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio4" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak Berkenaan</label>
-                                                    </div>                                            
                                                 </div>
-                                                
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Kemudahan Teknologi Lain</label>
-                                                    <br/>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio5" id="" value="yes">
-                                                        <label class="form-check-label" for="">Ya</label>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Sistem Keselamatan</label>
+                                                        <br/>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio3" id="" value="yes">
+                                                            <label class="form-check-label" for="">Ya</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio3" id="" value="no" required>
+                                                            <label class="form-check-label" for="">Tidak</label>
+                                                        </div>
+                                                        <br/>
+                                                        <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                        <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                     </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio5" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak</label>
-                                                    </div>
-                                                    <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
-                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
-                                                
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Tambahan Inovasi Dan Kreativiti Kepada Perniagaan</label>
-                                                    <br/>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio6" id="" value="yes">
-                                                        <label class="form-check-label" for="">Ya</label>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Sistem Dapur Berpusat</label>
+                                                        <br/>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio4" id="" value="yes">
+                                                            <label class="form-check-label" for="">Ya</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio4" id="" value="no">
+                                                            <label class="form-check-label" for="">Tidak</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio4" id="" value="no" required>
+                                                            <label class="form-check-label" for="">Tidak Berkenaan</label>
+                                                        </div>                                            
                                                     </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radio6" id="" value="no" required>
-                                                        <label class="form-check-label" for="">Tidak</label>
-                                                    </div>
-                                                    <br/>
-                                                    <small class="text-danger">Jika ya, sila isikan maklumat</small>
-                                                    <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
                                                 </div>
-                                                
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Kemudahan Teknologi Lain</label>
+                                                        <br/>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio5" id="" value="yes">
+                                                            <label class="form-check-label" for="">Ya</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio5" id="" value="no" required>
+                                                            <label class="form-check-label" for="">Tidak</label>
+                                                        </div>
+                                                        <br/>
+                                                        <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                        <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Tambahan Inovasi Dan Kreativiti Kepada Perniagaan</label>
+                                                        <br/>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio6" id="" value="yes">
+                                                            <label class="form-check-label" for="">Ya</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="radio6" id="" value="no" required>
+                                                            <label class="form-check-label" for="">Tidak</label>
+                                                        </div>
+                                                        <br/>
+                                                        <small class="text-danger">Jika ya, sila isikan maklumat</small>
+                                                        <input type="text" class="form-control m-t-10" id="" name="" value="">                                            
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
-                                        
+
                                         <div class="row card">
                                             <div class="card-header">
                                                 <h6>STRATEGI PEMASARAN</h6>
                                             </div>
                                             <div class="card-body">
+                                                @php $count = 0; @endphp
                                                 
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Pelan Pemasaran Bagi Mempromosikan Sistem Perniagaan Francais Anda</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Pelan Pemasaran Bagi Mempromosikan Sistem Perniagaan Francais Anda</label>
+                                                        <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    </div>
                                                 </div>
-                                                
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Pelan Pemasaran Bagi Mempromosikan Produk / Perkhidmatan</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Nyatakan Dengan Ringkas Pelan Pemasaran Bagi Mempromosikan Produk / Perkhidmatan</label>
+                                                        <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    </div>
                                                 </div>
-                                                
-                                                <div class="form-group">
-                                                    <label for=""><span class="text-danger">* </span>Nyatakan Jumlah Dana Yang Akan Diperuntukkan Bagi Tujuan Promosi Oleh Francaisor (RM)</label>
-                                                    <textarea class="form-control" id="" name="" rows="5" required></textarea>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-1">{{ ++$count }}.</div>
+                                                    <div class="col-sm-11">
+                                                        <label for=""><span class="text-danger">* </span>Nyatakan Jumlah Dana Yang Akan Diperuntukkan Bagi Tujuan Promosi Oleh Francaisor (RM)</label>
+                                                        <textarea class="form-control" id="" name="" rows="5" required></textarea>
+                                                    </div>
                                                 </div>
-                                                                                                
+
                                             </div>
                                         </div>
 

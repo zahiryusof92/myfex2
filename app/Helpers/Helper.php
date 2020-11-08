@@ -26,7 +26,7 @@ class Helper {
         return $franchise_type;
     }
 
-    public static function approvedBrandList() {
+    public static function approvedOwnBrandList() {
         $brand = ['' => '- Sila Pilih - '];
 
         if (Auth::user()->isUser()) {
@@ -34,7 +34,21 @@ class Helper {
                 ->where('brand_rights.company_id', Auth::user()->company_id)
                 ->where('brand_rights.status', BrandRights::DILULUS)
                 ->orderBy('brands.name', 'asc')
-                ->pluck('brands.name', 'brands.id')                    
+                ->pluck('brands.name', 'brand_rights.id')                    
+                ->toArray();
+        }        
+
+        return $brand;
+    }
+    
+    public static function approvedBrandList() {
+        $brand = ['' => '- Sila Pilih - '];
+
+        if (Auth::user()->isUser()) {
+            $brand += BrandRights::join('brands', 'brand_rights.brand_id', '=', 'brands.id')                    
+                ->where('brand_rights.status', BrandRights::DILULUS)
+                ->orderBy('brands.name', 'asc')
+                ->pluck('brands.name', 'brand_rights.id')                    
                 ->toArray();
         }        
 
