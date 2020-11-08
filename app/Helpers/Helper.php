@@ -2,12 +2,16 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\Company;
+use App\Models\BrandRights;
+use App\Models\Brand;
+use Illuminate\Support\Facades\DB;
 
 class Helper {
-    
+
     const PEMBERI_FRANCAIS = 1;
     const FRANCAISI_INDUK = 2;
     const PEMEGANG_FRANCAIS = 3;
@@ -22,20 +26,49 @@ class Helper {
         return $franchise_type;
     }
 
+    public static function approvedOwnBrandList() {
+        $brand = ['' => '- Sila Pilih - '];
+
+        if (Auth::user()->isUser()) {
+            $brand += BrandRights::join('brands', 'brand_rights.brand_id', '=', 'brands.id')
+                ->where('brand_rights.company_id', Auth::user()->company_id)
+                ->where('brand_rights.status', BrandRights::DILULUS)
+                ->orderBy('brands.name', 'asc')
+                ->pluck('brands.name', 'brand_rights.id')                    
+                ->toArray();
+        }        
+
+        return $brand;
+    }
+    
+    public static function approvedBrandList() {
+        $brand = ['' => '- Sila Pilih - '];
+
+        if (Auth::user()->isUser()) {
+            $brand += BrandRights::join('brands', 'brand_rights.brand_id', '=', 'brands.id')                    
+                ->where('brand_rights.status', BrandRights::DILULUS)
+                ->orderBy('brands.name', 'asc')
+                ->pluck('brands.name', 'brand_rights.id')                    
+                ->toArray();
+        }        
+
+        return $brand;
+    }
+
     public static function countryList() {
         $country = ['' => '- Sila Pilih - '];
         $country += Country::orderBy('nicename', 'asc')->pluck('nicename', 'id')->toArray();
 
         return $country;
     }
-    
+
     public static function malaysiaSateList() {
         $state = ['' => '- Negeri - '];
         $state += State::where('country_id', 129)->orderBy('name', 'asc')->pluck('name', 'id')->toArray();
 
         return $state;
     }
-    
+
     public static function getCompanyByConsultant($consultant_id) {
         $company = ['' => '- Sila Pilih - '];
         $company += Company::where('consultant', false)->where('consultant_id', $consultant_id)->where('status', Company::DILULUS)->orderBy('name', 'asc')->pluck('name', 'id')->toArray();

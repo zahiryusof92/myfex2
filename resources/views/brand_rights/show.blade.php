@@ -20,36 +20,6 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="card m-b-20">
-                    <div class="card-header">
-                        <div class="row">
-                            @if (Auth::user()->isUser() || Auth::user()->isConsultant())
-                            <div class="col-6">
-                                @if ($brandRights->status == App\Models\BrandRights::DILULUS)
-                                <form method="POST" action="{{ route('application.store') }}">
-                                    @csrf
-                                    <input type="hidden" name="brandright_id" value="{{ $brandRights->id }}"/>
-                                    <input type="hidden" name="company_id" value="{{ $brandRights->company->id }}"/>
-                                    <input type="hidden" name="franchise_type_id" value="{{ $brandRights->franchise_type_id }}"/>
-                                    <button type="submit" class="btn btn-primary w-md waves-effect waves-light m-r-5">
-                                        Daftar {{ App\Helpers\Helper::getFranchiseType($brandRights->franchise_type_id) }} <i class="mdi mdi-plus"></i>
-                                    </button>
-                                </form>
-                                @endif
-                            </div>
-                            <div class="col-6 text-right">
-                                <a href="{{ route('brandRights.index') }}" class="btn btn-danger w-md waves-effect waves-light">
-                                    <i class="mdi mdi-undo mdi-18px"></i> Kembali
-                                </a>
-                            </div>
-                            @else
-                            <div class="col-12 text-right">
-                                <a href="{{ route('brandRights.index') }}" class="btn btn-danger w-md waves-effect waves-light">
-                                    <i class="mdi mdi-undo mdi-18px"></i> Kembali
-                                </a>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
                     <div class="card-body">
                         @if (Auth::user()->isUser())
                         @if ($brandRights->status != App\Models\BrandRights::DRAF)                        

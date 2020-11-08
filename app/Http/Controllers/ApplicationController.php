@@ -39,11 +39,14 @@ class ApplicationController extends Controller {
             }
 
             return DataTables::of($data)
-                            ->addColumn('franchise_type', function ($row) {
+                            ->addColumn('brand', function ($row) {
                                 if ($row->status == Application::DRAF) {
-                                    return '<a href="' . route('application.companyInformation', $row->id) . '"><u>' . Helper::getFranchiseType($row->franchise_type_id) . '</u></a>';
+                                    return '<a href="' . route('application.companyInformation', $row->id) . '"><u>' . $row->brandRight->brand->name . '</u></a>';
                                 }
-                                return '<a href="' . route('application.show', $row->id) . '"><u>' . Helper::getFranchiseType($row->franchise_type_id) . '</u></a>';
+                                return '<a href="' . route('application.show', $row->id) . '"><u>' . $row->brandRight->brand->name . '</u></a>';
+                            })
+                            ->editColumn('franchise_type', function ($row) {
+                                return Helper::getFranchiseType($row->franchise_type_id);
                             })
                             ->editColumn('status', function ($row) {
                                 return $row->getStatus();
@@ -64,7 +67,15 @@ class ApplicationController extends Controller {
 
                                 return $updated_at;
                             })
-                            ->rawColumns(['franchise_type', 'status', 'created_at', 'updated_at'])
+                            ->addColumn('action', function($row) {
+                                $button = '';
+                                if ($row->status == Application::DILULUS) {
+                                    $button .= '<a href="' . route('application.companyInformation', $row->id) . '" class="btn btn-sm btn-info waves-effect waves-light">Pindaan Matan</a>';
+                                }
+
+                                return $button;
+                            })
+                            ->rawColumns(['brand', 'franchise_type', 'status', 'created_at', 'updated_at', 'action'])
                             ->make(true);
         }
 
@@ -77,8 +88,7 @@ class ApplicationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-
-        return view('application.create');
+        //
     }
 
     /**
@@ -88,7 +98,6 @@ class ApplicationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-
         $application = new Application();
         $application->brandright_id = $request->brandright_id;
         $application->company_id = $request->company_id;
@@ -112,7 +121,14 @@ class ApplicationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application) {
-        //
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.show', compact('application'));
     }
 
     /**
@@ -146,13 +162,49 @@ class ApplicationController extends Controller {
         //
     }
 
+    public function franchise() {
+        $approvedBrandList = Helper::approvedOwnBrandList();
+
+        return view('application.franchise.create', compact('approvedBrandList'));
+    }
+
+    public function franchisee() {
+        $approvedBrandList = Helper::approvedBrandList();
+
+        return view('application.franchisee.create', compact('approvedBrandList'));
+    }
+
+    public function getFranchiseType(Request $request) {
+        if ($request->ajax()) {
+            $brandRights = BrandRights::findOrFail($request->id);
+            if ($brandRights) {
+                $id = $brandRights->franchise_type_id;
+                $name = Helper::getFranchiseType($brandRights->franchise_type_id);
+
+                $result = array(
+                    'success' => true,
+                    'brandright_id' => $brandRights->id,
+                    'franchise_type_id' => '<option value="' . $id . '" selected="selected">' . $name . '</option>',
+                );
+
+                return $result;
+            }
+        }
+
+        $result = array(
+            'success' => true,
+            'brandRight_id' => '',
+            'franchise_type_id' => '<option value="" selected="selected"> - Tiada Maklumat - </option>',
+        );
+
+        return $result;
+    }
+
     public function companyInformation($id) {
         $application = Application::findOrFail($id);
 
-        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
-            $path = 'franchisor';
-        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
-            $path = 'master_franchisee';
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
         } else {
             $path = 'franchisee';
         }
@@ -163,10 +215,8 @@ class ApplicationController extends Controller {
     public function capitalEquity($id) {
         $application = Application::findOrFail($id);
 
-        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
-            $path = 'franchisor';
-        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
-            $path = 'master_franchisee';
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
         } else {
             $path = 'franchisee';
         }
@@ -177,29 +227,121 @@ class ApplicationController extends Controller {
     public function businessOperation($id) {
         $application = Application::findOrFail($id);
 
-        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
-            $path = 'franchisor';
-        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
-            $path = 'master_franchisee';
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
         } else {
             $path = 'franchisee';
         }
 
         return view('application.' . $path . '.business_operation', compact('application'));
     }
-    
+
     public function businessInformation($id) {
         $application = Application::findOrFail($id);
 
-        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS) {
-            $path = 'franchisor';
-        } else if ($application->franchise_type_id == Helper::FRANCAISI_INDUK) {
-            $path = 'master_franchisee';
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
         } else {
             $path = 'franchisee';
         }
 
         return view('application.' . $path . '.business_information', compact('application'));
+    }
+
+    public function franchiseeObligation($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.franchisee_obligation', compact('application'));
+    }
+
+    public function franchisorObligation($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.franchisor_obligation', compact('application'));
+    }
+
+    public function rightsObligation($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.rights_obligation', compact('application'));
+    }
+
+    public function financeReport($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.finance_report', compact('application'));
+    }
+
+    public function startingCost($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.starting_cost', compact('application'));
+    }
+
+    public function filesUpload($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.files_upload', compact('application'));
+    }
+
+    public function declaration($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.declaration', compact('application'));
+    }
+
+    public function franchiseeInformation($id) {
+        $application = Application::findOrFail($id);
+
+        if ($application->franchise_type_id == Helper::PEMBERI_FRANCAIS || $application->franchise_type_id == Helper::FRANCAISI_INDUK) {
+            $path = 'franchise';
+        } else {
+            $path = 'franchisee';
+        }
+
+        return view('application.' . $path . '.franchisee_information', compact('application'));
     }
 
 }

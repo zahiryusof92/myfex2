@@ -33,19 +33,30 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::resources([
-        'profile' => ProfileController::class,
-        'user' => UserController::class,
-        'company' => CompanyController::class,
-        'brandRights' => BrandRightsController::class,
-        'application' => ApplicationController::class,
-    ]);
+
+    Route::resource('profile', ProfileController::class)->only(['index', 'edit', 'show']);
+    Route::resource('user', UserController::class)->only(['index', 'show']);
+    Route::resource('company', CompanyController::class)->only(['index', 'show']);
+    Route::resource('brandRights', BrandRightsController::class)->only(['index', 'create', 'show']);
+    Route::resource('application', ApplicationController::class)->only(['index', 'store', 'show']);
+
+    Route::get('application/franchise/create', [ApplicationController::class, 'franchise'])->name('application.franchise.create');
+    Route::get('application/franchisee/create', [ApplicationController::class, 'franchisee'])->name('application.franchisee.create');
+    Route::post('application/getFranchiseType', [ApplicationController::class, 'getFranchiseType'])->name('application.getFranchiseType');
 
     Route::get('application/{id}/companyInformation', [ApplicationController::class, 'companyInformation'])->name('application.companyInformation');
     Route::get('application/{id}/capitalEquity', [ApplicationController::class, 'capitalEquity'])->name('application.capitalEquity');
     Route::get('application/{id}/businessOperation', [ApplicationController::class, 'businessOperation'])->name('application.businessOperation');
     Route::get('application/{id}/businessInformation', [ApplicationController::class, 'businessInformation'])->name('application.businessInformation');
-
+    Route::get('application/{id}/franchiseeObligation', [ApplicationController::class, 'franchiseeObligation'])->name('application.franchiseeObligation');
+    Route::get('application/{id}/franchisorObligation', [ApplicationController::class, 'franchisorObligation'])->name('application.franchisorObligation');
+    Route::get('application/{id}/rightsObligation', [ApplicationController::class, 'rightsObligation'])->name('application.rightsObligation');
+    Route::get('application/{id}/financeReport', [ApplicationController::class, 'financeReport'])->name('application.financeReport');
+    Route::get('application/{id}/startingCost', [ApplicationController::class, 'startingCost'])->name('application.startingCost');
+    Route::get('application/{id}/filesUpload', [ApplicationController::class, 'filesUpload'])->name('application.filesUpload');
+    Route::get('application/{id}/declaration', [ApplicationController::class, 'declaration'])->name('application.declaration');
+    Route::get('application/{id}/franchiseeInformation', [ApplicationController::class, 'franchiseeInformation'])->name('application.franchiseeInformation');
+        
     Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
 
     Route::middleware('superadmin')->group(function () {

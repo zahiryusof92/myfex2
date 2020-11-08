@@ -59,7 +59,10 @@ class ProfileController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        
+        $user = User::findOrFail($id);
+        
+        return view('profile.edit', compact('user'));
     }
 
     /**

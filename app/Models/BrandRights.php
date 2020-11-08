@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\Helper;
 
 class BrandRights extends Model {
 
@@ -51,6 +52,20 @@ class BrandRights extends Model {
             return true;
         }
 
+        return false;
+    }
+
+    public static function showFranchisorButton() {
+        if (self::getApproved()) {
+            // show button
+            $pending = Application::where('company_id', Auth::user()->company_id)->where('franchise_type_id', '!=', Helper::PEMEGANG_FRANCAIS)->where('status', '!=', self::DRAF)->count();
+            if ($pending) {
+                return false;
+            }
+            
+            return true;
+        }
+        
         return false;
     }
 
