@@ -70,7 +70,7 @@ class ApplicationController extends Controller {
                             ->addColumn('action', function($row) {
                                 $button = '';
                                 if ($row->franchise_type_id != Helper::PEMEGANG_FRANCAIS && $row->status == Application::DILULUS) {
-                                    $button .= '<a href="' . route('amendment.companyInformation', $row->id) . '" class="btn btn-sm btn-info waves-effect waves-light">Pindaan Matan</a>';
+                                    $button .= '<a href="' . route('amendment.create') . '" class="btn btn-sm btn-info waves-effect waves-light">Pindaan Matan</a>';
                                 }
 
                                 return $button;
