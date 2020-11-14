@@ -84,10 +84,10 @@ class DocumentController extends Controller {
     public function store(Request $request) {
 
         if ($request->file('file_url')) {
-            $file_url = $request->file('file_url')->storeAs(
+            $file_url = Storage::disk('public')->putFileAs(
                     'document',
+                    $request->file('file_url'),
                     $request->name . '.' . $request->file('file_url')->extension(),
-                    'public'
             );
 
             if ($file_url) {
@@ -142,10 +142,10 @@ class DocumentController extends Controller {
         $file_url = $document->file_url;
 
         if ($request->file('file_url')) {
-            $file_url = $request->file('file_url')->storeAs(
+            $file_url = Storage::disk('public')->putFileAs(
                     'document',
+                    $request->file('file_url'),
                     $request->name . '.' . $request->file('file_url')->extension(),
-                    'public'
             );
         }
 
@@ -170,7 +170,7 @@ class DocumentController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy(Document $document) {
-        
+
         $success = $document->delete();
 
         if ($success) {
