@@ -56,6 +56,20 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect {{ request()->routeIs('amendment*') ? 'active' : '' }}">
+                        <i class="mdi mdi-pen"></i>
+                        <span> Pindaan Matan <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span>
+                    </a>                   
+                    <ul class="submenu {{ request()->routeIs('amendment*') ? 'collapse in' : '' }}">
+                        <li class="{{ request()->routeIs('amendment.create') ? 'active' : '' }}">
+                            <a href="{{ route('amendment.create') }}">Daftar Pindaan Matan</a>
+                        </li>
+                        <li class="{{ request()->routeIs('amendment.index') ? 'active' : '' }}">
+                            <a href="{{ route('amendment.index') }}">Senarai Pindaan Matan</a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
                 @endif
 

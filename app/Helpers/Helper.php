@@ -8,6 +8,7 @@ use App\Models\State;
 use App\Models\Company;
 use App\Models\BrandRights;
 use App\Models\Brand;
+use App\Models\Application;
 use Illuminate\Support\Facades\DB;
 
 class Helper {
@@ -26,31 +27,48 @@ class Helper {
         return $franchise_type;
     }
 
+    public static function approvedOwnApplicationList() {
+        $brand = ['' => '- Sila Pilih - '];
+
+        if (Auth::user()->isUser()) {
+            $brand += Application::join('brand_rights', 'applications.brandright_id', '=', 'brand_rights.id')
+                    ->join('brands', 'brand_rights.brand_id', '=', 'brands.id')
+                    ->where('applications.status', Application::DILULUS)
+                    ->where('brand_rights.company_id', Auth::user()->company_id)
+                    ->where('brand_rights.status', BrandRights::DILULUS)                    
+                    ->orderBy('brands.name', 'asc')
+                    ->pluck('brands.name', 'brand_rights.id')
+                    ->toArray();
+        }
+
+        return $brand;
+    }
+
     public static function approvedOwnBrandList() {
         $brand = ['' => '- Sila Pilih - '];
 
         if (Auth::user()->isUser()) {
             $brand += BrandRights::join('brands', 'brand_rights.brand_id', '=', 'brands.id')
-                ->where('brand_rights.company_id', Auth::user()->company_id)
-                ->where('brand_rights.status', BrandRights::DILULUS)
-                ->orderBy('brands.name', 'asc')
-                ->pluck('brands.name', 'brand_rights.id')                    
-                ->toArray();
-        }        
+                    ->where('brand_rights.company_id', Auth::user()->company_id)
+                    ->where('brand_rights.status', BrandRights::DILULUS)
+                    ->orderBy('brands.name', 'asc')
+                    ->pluck('brands.name', 'brand_rights.id')
+                    ->toArray();
+        }
 
         return $brand;
     }
-    
+
     public static function approvedBrandList() {
         $brand = ['' => '- Sila Pilih - '];
 
         if (Auth::user()->isUser()) {
-            $brand += BrandRights::join('brands', 'brand_rights.brand_id', '=', 'brands.id')                    
-                ->where('brand_rights.status', BrandRights::DILULUS)
-                ->orderBy('brands.name', 'asc')
-                ->pluck('brands.name', 'brand_rights.id')                    
-                ->toArray();
-        }        
+            $brand += BrandRights::join('brands', 'brand_rights.brand_id', '=', 'brands.id')
+                    ->where('brand_rights.status', BrandRights::DILULUS)
+                    ->orderBy('brands.name', 'asc')
+                    ->pluck('brands.name', 'brand_rights.id')
+                    ->toArray();
+        }
 
         return $brand;
     }
