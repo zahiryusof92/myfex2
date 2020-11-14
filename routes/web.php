@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BrandRightsController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\AmendmentController;
 use App\Http\Controllers\LexaController;
 
 /*
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('company', CompanyController::class)->only(['index', 'show']);
     Route::resource('brandRights', BrandRightsController::class)->only(['index', 'create', 'show']);
     Route::resource('application', ApplicationController::class)->only(['index', 'store', 'show']);
+    Route::resource('amendment', AmendmentController::class)->only(['index', 'create', 'store', 'show']);
 
     Route::get('application/franchise/create', [ApplicationController::class, 'franchise'])->name('application.franchise.create');
     Route::get('application/franchisee/create', [ApplicationController::class, 'franchisee'])->name('application.franchisee.create');
@@ -56,6 +58,21 @@ Route::middleware('auth')->group(function () {
     Route::get('application/{id}/filesUpload', [ApplicationController::class, 'filesUpload'])->name('application.filesUpload');
     Route::get('application/{id}/declaration', [ApplicationController::class, 'declaration'])->name('application.declaration');
     Route::get('application/{id}/franchiseeInformation', [ApplicationController::class, 'franchiseeInformation'])->name('application.franchiseeInformation');
+        
+    Route::post('amendment/getFranchiseType', [AmendmentController::class, 'getFranchiseType'])->name('amendment.getFranchiseType');
+    
+    Route::get('amendment/{id}/companyInformation', [AmendmentController::class, 'companyInformation'])->name('amendment.companyInformation');
+    Route::get('amendment/{id}/capitalEquity', [AmendmentController::class, 'capitalEquity'])->name('amendment.capitalEquity');
+    Route::get('amendment/{id}/businessOperation', [AmendmentController::class, 'businessOperation'])->name('amendment.businessOperation');
+    Route::get('amendment/{id}/businessInformation', [AmendmentController::class, 'businessInformation'])->name('amendment.businessInformation');
+    Route::get('amendment/{id}/franchiseeObligation', [AmendmentController::class, 'franchiseeObligation'])->name('amendment.franchiseeObligation');
+    Route::get('amendment/{id}/franchisorObligation', [AmendmentController::class, 'franchisorObligation'])->name('amendment.franchisorObligation');
+    Route::get('amendment/{id}/rightsObligation', [AmendmentController::class, 'rightsObligation'])->name('amendment.rightsObligation');
+    Route::get('amendment/{id}/financeReport', [AmendmentController::class, 'financeReport'])->name('amendment.financeReport');
+    Route::get('amendment/{id}/startingCost', [AmendmentController::class, 'startingCost'])->name('amendment.startingCost');
+    Route::get('amendment/{id}/filesUpload', [AmendmentController::class, 'filesUpload'])->name('amendment.filesUpload');
+    Route::get('amendment/{id}/declaration', [AmendmentController::class, 'declaration'])->name('amendment.declaration');
+    Route::get('amendment/{id}/franchiseeInformation', [AmendmentController::class, 'franchiseeInformation'])->name('amendment.franchiseeInformation');
         
     Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
 
