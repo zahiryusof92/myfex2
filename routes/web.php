@@ -8,6 +8,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BrandRightsController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AmendmentController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\LexaController;
 
 /*
@@ -77,6 +78,8 @@ Route::middleware('auth')->group(function () {
     Route::post('brandRights/getRegNo', [BrandRightsController::class, 'getRegNo'])->name('brandRights.getRegNo');
 
     Route::middleware('superadmin')->group(function () {
+        Route::resource('document', DocumentController::class);
+        
         Route::get('/page/{page}', [LexaController::class, 'index']);
     });
 });
