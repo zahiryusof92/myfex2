@@ -37,7 +37,7 @@ class Helper {
                     ->where('brand_rights.company_id', Auth::user()->company_id)
                     ->where('brand_rights.status', BrandRights::DILULUS)                    
                     ->orderBy('brands.name', 'asc')
-                    ->pluck('brands.name', 'brand_rights.id')
+                    ->pluck('brands.name', 'applications.id')
                     ->toArray();
         }
 
