@@ -84,10 +84,10 @@ class DocumentController extends Controller {
     public function store(Request $request) {
 
         if ($request->file('file_url')) {
-            $file_url = Storage::disk('public')->putFileAs(
+            $file_url = $request->file('file_url')->storeAs(
                     'document',
-                    $request->file('file_url'),
-                    $request->name . '.' . $request->file('file_url')->extension(),
+                    $request->name . '.' . $request->file('file_url')->getClientOriginalExtension(),
+                    'public'
             );
 
             if ($file_url) {
@@ -142,10 +142,10 @@ class DocumentController extends Controller {
         $file_url = $document->file_url;
 
         if ($request->file('file_url')) {
-            $file_url = Storage::disk('public')->putFileAs(
+            $file_url = $request->file('file_url')->storeAs(
                     'document',
-                    $request->file('file_url'),
-                    $request->name . '.' . $request->file('file_url')->extension(),
+                    $request->name . '.' . $request->file('file_url')->getClientOriginalExtension(),
+                    'public'
             );
         }
 
