@@ -63,7 +63,7 @@
             "php artisan clear-compiled",
             "php artisan storage:link",
             "chmod -R 777 public/",
-            "chmod -R 775 public/storage/document"            
+            "chmod -R 775 storage/app/public/"            
         ]
     }
 }
