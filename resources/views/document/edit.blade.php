@@ -61,7 +61,7 @@
                             <div class="col-sm-8">
                                 <input type="file" class="form-control-file" id="file_url" name="file_url">
                                 @if ($document->file_url)
-                                <a href="{{ asset($document->file_url) }}" target="_blank">
+                                <a href="{{ Storage::url($document->file_url) }}" target="_blank">
                                     <i class="mdi mdi-file-pdf mdi-36px"></i> <br/>
                                     <small>{{ $document->name }}</small>
                                 </a> 
