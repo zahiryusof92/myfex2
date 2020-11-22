@@ -1,22 +1,16 @@
 @extends('layouts.master')
 
+@section('breadcrumb')
+<h4 class="page-title">Daftar Pemberi Francais</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
+    <li class="breadcrumb-item active">Daftar Pemberi Francais</li>
+</ol>
+@endsection
+
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-
-                <h4 class="page-title">Daftar Pemberi Francais</h4>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
-                    <li class="breadcrumb-item active">Daftar Pemberi Francais</li>
-                </ol>
-
-            </div>
-        </div>
-    </div>
-    <!-- end row -->
 
     <div class="row">
         <div class="col-12">
@@ -72,7 +66,7 @@
                                             <label for="">Makluman kepada Pendaftar Francais (jika ada)</label>
                                             <textarea class="form-control" id="" name="" rows="7"></textarea>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <p class="text-danger">Peringatan: Sila Membuat Pembayaran Fi, sebelum permohonan diproses</p>
                                             <label for="">Jumlah Bayaran Yuran Proses Permohonan: RM 50.00</label>
@@ -101,9 +95,11 @@
                 </div>
             </div>
         </div>
+        <!-- end col -->
     </div>
+    <!-- end row -->
 </div>
-
+<!-- container-fluid -->
 @endsection
 
 @section('script')

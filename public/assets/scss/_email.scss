@@ -51,6 +51,7 @@
   }
 }
 
+
 .message-list {
   display: block;
   padding-left: 0;
@@ -156,7 +157,7 @@
 
   li.unread  {
     background-color: darken($white,3%);
-    font-weight: 600;
+    font-weight: 500;
     a{
       color: darken($dark,5%);
       font-weight: 500;

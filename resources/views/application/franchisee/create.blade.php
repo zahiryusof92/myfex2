@@ -1,23 +1,16 @@
 @extends('layouts.master')
 
+@section('breadcrumb')
+<h4 class="page-title">Daftar Pemegang Francais</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
+    <li class="breadcrumb-item active">Daftar Pemegang Francais</li>
+</ol>
+@endsection
+
 @section('content')
 <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-
-                <h4 class="page-title">Daftar Pemegang Francais</h4>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
-                    <li class="breadcrumb-item active">Daftar Pemegang Francais</li>
-                </ol>             
-
-            </div>
-        </div>
-    </div>
-    <!-- end row -->
 
     <div class="row">
         <div class="col-12">
@@ -45,7 +38,7 @@
                                 {{ Form::select('brand_name', $approvedBrandList, false, array('id' => 'brand_name' , 'class' => 'form-control select2', 'onchange' => 'getFranchiseType()', 'required')) }}
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <label for="company_name">Nama Syarikat</label>
@@ -81,10 +74,11 @@
                 </div>
             </div>
         </div>
+        <!-- end col -->
     </div>
-
+    <!-- end row -->
 </div>
-
+<!-- container-fluid -->
 @endsection
 
 @section('script')

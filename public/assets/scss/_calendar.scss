@@ -21,6 +21,7 @@
     text-transform: uppercase;
   }
 }
+
 .fc-day {
   background: $white;
 }
@@ -98,7 +99,7 @@
   text-align: center;
   background-color: $primary;
   color: $white !important;
-  .fc-time {
+  .fc-time{
     font-weight: 500;
   }
 }

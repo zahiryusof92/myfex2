@@ -9,21 +9,16 @@
 <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
+@section('breadcrumb')
+<h4 class="page-title">Senarai Pengguna</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
+    <li class="breadcrumb-item active">Senarai Pengguna</li>
+</ol>
+@endsection
+
 @section('content')
 <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <h4 class="page-title">Senarai Pengguna</h4>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item active">Senarai Pengguna</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-    <!-- end row -->
 
     <div class="row">
         <div class="col-12">
@@ -48,9 +43,12 @@
 
                 </div>
             </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
-</div> <!-- container-fluid -->
+        </div>
+        <!-- end col -->
+    </div> 
+    <!-- end row -->
+</div>
+<!-- end container-fluid -->
 @endsection
 
 @section('script')
@@ -75,7 +73,7 @@ $(document).ready(function () {
             {data: 'email', name: 'email'},
             {data: 'role', name: 'role'},
             {data: 'status', name: 'status'},
-            {data: 'created_at', name: 'created_at'}            
+            {data: 'created_at', name: 'created_at'}
         ],
         order: [5, 'desc']
     });
