@@ -1,23 +1,16 @@
 @extends('layouts.master')
 
+@section('breadcrumb')
+<h4 class="page-title">Maklumat Pemegang Francais</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
+    <li class="breadcrumb-item active">Maklumat Pemegang Francais</li>
+</ol>
+@endsection
+
 @section('content')
 <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-
-                <h4 class="page-title">Maklumat Pemegang Francais</h4>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
-                    <li class="breadcrumb-item active">Maklumat Pemegang Francais</li>
-                </ol>          
-
-            </div>
-        </div>
-    </div>
-    <!-- end row -->
 
     <div class="row">
         <div class="col-12">
@@ -357,7 +350,7 @@
                                         <div class="col-sm-11">
                                             <label for=""><span class="text-danger">* </span>Konsep Perniagaan Francais Yang Dijalankan</label>
                                             <br/>
-                                            
+
                                             <table class="table table-bordered table-hover m-t-10">
                                                 <thead>
                                                     <tr class="table-active">
@@ -673,8 +666,9 @@
                 </div>
             </div>
         </div>
+        <!-- end col -->
     </div>
-
+    <!-- end row -->
 </div>
-
+<!-- container-fluid -->
 @endsection

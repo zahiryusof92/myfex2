@@ -17,21 +17,14 @@ Invoice
   Print css
 ===================*/
 @media print {
-  .topbar, .left, .page-title-box, .footer {
+  #topnav,.footer {
     display: none;
   }
   .wrapper {
     padding: 0;
   }
-  .content {
-    margin-top: 0;
-    padding-top: 0;
-  }
-  .content-page {
-    margin-left: 0;
-    margin-top: 0;
-  }
   .container-fluid {
     width: 100%;
   }
+
 }

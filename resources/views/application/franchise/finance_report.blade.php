@@ -1,22 +1,16 @@
 @extends('layouts.master')
 
+@section('breadcrumb')
+<h4 class="page-title">Daftar Pemberi Francais</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
+    <li class="breadcrumb-item active">Daftar Pemberi Francais</li>
+</ol>
+@endsection
+
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-
-                <h4 class="page-title">Daftar Pemberi Francais</h4>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('application.index') }}">Senarai Permohonan</a></li>
-                    <li class="breadcrumb-item active">Daftar Pemberi Francais</li>
-                </ol>
-
-            </div>
-        </div>
-    </div>
-    <!-- end row -->
 
     <div class="row">
         <div class="col-12">
@@ -250,14 +244,14 @@
                                                     <label for="">Sila muat-naik akaun teraudit/akaun pengurusan serta nota kepada akaun yang telah disahkan oleh Pesuruhjaya Sumpah, Majistret atau Notari Awam.</label>
                                                     <input type="file" class="form-control-file" id="" name=""/>
                                                 </div>
-                                                
-                                                 <div class="form-group">
+
+                                                <div class="form-group">
                                                     <label for="">Nyatakan sebab Kerugian Bagi Kes Rayuan</label>
                                                     <textarea class="form-control" id="" name="" rows="7"></textarea>
                                                     <br/>
                                                     <small class="text-danger">Sila muat-naik dokumen berkaitan yang telah disahkan oleh Pesuruhjaya Sumpah, Majistret atau Notari Awam sebagai bukti.</small>
                                                     <input type="file" class="form-control-file" id="" name=""/>
-                                                 </div>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -284,9 +278,11 @@
                 </div>
             </div>
         </div>
+        <!-- end col -->
     </div>
+    <!-- end row -->
 </div>
-
+<!-- container-fluid -->
 @endsection
 
 @section('script')

@@ -17,32 +17,17 @@
     </head>
     <body>
 
-        <!-- Begin page -->
-        <div id="wrapper">
+        @include('layouts.header')
 
-            @include('layouts.topbar')
+        <div class="wrapper">
 
-            @include('layouts.sidebar')
+            @yield('content')
 
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-            <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    @yield('content')
-                </div> <!-- content -->
-
-                @include('layouts.footer')   
-
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Right content here -->
-            <!-- ============================================================== -->
         </div>
-        <!-- END wrapper -->
+        <!-- end wrapper -->
 
-        @include('layouts.footer-script') 
+        @include('layouts.footer')    
+        @include('layouts.footer-script')
 
     </body>
 </html>

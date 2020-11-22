@@ -9,18 +9,15 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-        
+
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico')}}">
 
         @include('layouts.head')
 
     </head>
     <body>
-        
-        <!-- Begin page -->
-        <div id="wrapper">
-            @yield('content')
-        </div>
+
+        @yield('content')
 
         @include('layouts.footer-script')    
 

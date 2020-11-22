@@ -9,26 +9,20 @@
 <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
+@section('breadcrumb')
+<h4 class="page-title">Senarai Dokumen</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
+    <li class="breadcrumb-item active">Senarai Dokumen</li>
+</ol>
+@endsection
+
 @section('content')
 <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <h4 class="page-title">Senarai Dokumen</h4>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item active">Senarai Dokumen</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-    <!-- end row -->
-
+    
     <div class="row">
         <div class="col-12">
             <div class="card m-b-20">
-
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12">
@@ -55,11 +49,14 @@
                         </tbody>
                     </table>
                 </div>
-
+                
             </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
-</div> <!-- container-fluid -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->    
+</div>
+<!-- container-fluid -->
 @endsection
 
 @section('script')

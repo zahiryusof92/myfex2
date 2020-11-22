@@ -1,21 +1,16 @@
 @extends('layouts.master')
 
+@section('breadcrumb')
+<h4 class="page-title">Daftar Syarikat</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('company.index') }}">Senarai Syarikat</a></li>
+    <li class="breadcrumb-item active">Daftar Syarikat</li>
+</ol>
+@endsection
+
 @section('content')
 <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <h4 class="page-title">Daftar Syarikat</h4>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Laman Utama</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('company.index') }}">Senarai Syarikat</a></li>
-                    <li class="breadcrumb-item active">Daftar Syarikat</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-    <!-- end row -->
 
     <div class="row">
         <div class="col-12">
@@ -127,8 +122,10 @@
                 </div>
             </div>
         </div>
+        <!-- end col -->
     </div>
-
+    <!-- end row -->
 </div>
+<!-- container-fluid -->
 
 @endsection
