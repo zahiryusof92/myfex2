@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable {
+class User extends Authenticatable implements Auditable {
 
     use HasFactory,
-        Notifiable;
+        Notifiable,
+        \OwenIt\Auditing\Auditable;
 
     const DRAF = 0;
     const BARU = 1;
@@ -110,7 +112,7 @@ class User extends Authenticatable {
     public function isPPF() {
         return $this->role->name === 'Pegawai Proses (Francais)';
     }
-    
+
     public function isDasar() {
         return $this->role->name === 'Pegawai Proses (Dasar)';
     }
